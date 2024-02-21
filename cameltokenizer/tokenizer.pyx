@@ -81,7 +81,7 @@ cdef class CamelTokenizer:
     def normalize(self, s):
         return dediac_ar(normalize_unicode(s))
 
-    def align_tokens(self, raw_tokens, splitted_words, verbose=False, doc_count=0, log_count=91):
+    def align_tokens(self, raw_tokens, splitted_words, verbose=False, doc_count=0, log_count=None):
         """
         words = []
         for word in splitted_words:
@@ -122,6 +122,7 @@ cdef class CamelTokenizer:
                             done = True
                             continue
                     splitted_word = segment = splitted_words[i_morpho] # .strip()
+                    i_morpho += 1
                     segment_len = len(segment)
                     if doc_count==log_count:
                         print('.', i_raw, i_morpho, raw_token, splitted_word, segment, word_segments)
@@ -139,34 +140,37 @@ cdef class CamelTokenizer:
                     word += segment 
                     word_len += segment_len
                     total_output_len += segment_len
-                    i_morpho += 1
                     if word.count('NOAN'):
                         total_output_len -= word_len
                         morpho_segments.append([raw_token])
                         total_output_len += raw_len
-                        case = 'NOAN'
-                        if splitted_words[i_morpho+1].startswith('+'):
+                        if splitted_words[i_morpho].startswith('+'):
                             i_morpho += 1
-                        done = True
-                    elif word_len > raw_len:
-                        if case == 'prefix':
-                            i_morpho -= 1
-                        total_output_len -= word_len
-                        morpho_segments.append([raw_token])
-                        total_output_len += raw_len
+                        case = 'NOAN'
                         done = True
                     elif word_len == raw_len and not case == 'prefix':
-                        if self.normalize(word) == self.normalize(raw_token):
+                        # self.normalize(word) == self.normalize(raw_token):
+                        if word == raw_token:
                             morpho_segments.append(word_segments)
                         else:
+                            """
                             restored_word_segments = []
                             offset = 0
                             for segment in word_segments:
                                 restored_word_segments.append(raw_token[offset:offset+len(segment)])
                                 offset += len(segment)
                             morpho_segments.append(restored_word_segments)
+                            """
+                            morpho_segments.append([raw_token])
                         done = True
                     elif word_len >= raw_len:
+                        if case == 'prefix':
+                            i_morpho -= 1
+                        total_output_len -= word_len
+                        morpho_segments.append([raw_token])
+                        total_output_len += raw_len
+                        done = True
+                    elif word_len < raw_len and not case == 'prefix':
                         total_output_len -= word_len
                         morpho_segments.append([raw_token])
                         total_output_len += raw_len
