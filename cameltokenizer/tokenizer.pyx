@@ -23,7 +23,6 @@ from spacy.training import validate_examples
 cdef class CamelTokenizer:
 
     def __init__(self, object nlp):
-        print("__init__ CamelTokenizer")
         # self.nlp = nlp
         self.nlp = Arabic()
         self.native_tokenizer = self.nlp.tokenizer
@@ -34,7 +33,7 @@ cdef class CamelTokenizer:
 
     def __call__(self, text, verbose=False):
         self.count += 1
-        print self.count ,
+        # print self.count ,
         doc = self.native_tokenizer(text)
         raw_tokens = [t.text for t in doc if t.text]
         n_raw_tokens = len(raw_tokens)
@@ -43,17 +42,11 @@ cdef class CamelTokenizer:
         spaces = []
         morphos = self.atb_tokenizer.tokenize(raw_tokens)
         n_morphos = len(morphos)
-        if verbose:
-            print(n_raw_tokens, n_morphos)
-            print(raw_tokens)
-            print(morphos)
         alignments = self.align_tokens(raw_tokens, morphos, verbose=verbose, doc_count=self.count)
         if not alignments:
             return doc
         cdef Pool mem = Pool()
         for i, alignment in enumerate(alignments):
-            if verbose:
-                print(i, alignment)
             raw_token, morpho_segments = alignment
             n_segments = len(morpho_segments)
             for j, segment in enumerate(morpho_segments):
@@ -79,15 +72,10 @@ cdef class CamelTokenizer:
             return [word]
 
     def normalize(self, s):
-        return dediac_ar(normalize_unicode(s))
+        # return dediac_ar(normalize_unicode(s))
+        return dediac_ar(s)
 
     def align_tokens(self, raw_tokens, splitted_words, verbose=False, doc_count=0, log_count=None):
-        """
-        words = []
-        for word in splitted_words:
-            words.extend(self.fix_morpho(word))
-        splitted_words = words
-        """
         n_raw = len(raw_tokens)
         n_splitted = len(splitted_words)
         if verbose:
@@ -101,14 +89,12 @@ cdef class CamelTokenizer:
             raw_len = len(raw_token)
             total_raw_len += raw_len
             splitted_word = splitted_words[i_morpho]
-            if self.normalize(splitted_word) == self.normalize(raw_token) or (splitted_word.count('NOAN') and not splitted_words[i_morpho+1].startswith('+')):
+            if splitted_word == raw_token or self.normalize(splitted_word) == self.normalize(raw_token) or splitted_word.count('NOAN'):
                 morpho_segments.append([raw_token])
                 total_output_len += raw_len
                 if doc_count==log_count:
                     if splitted_word == raw_token and total_output_len == total_raw_len:
                         print('+', i_raw, i_morpho, raw_token, splitted_word)
-                    else:
-                        print('-', i_raw, i_morpho, raw_token, splitted_word)
                 i_morpho += 1
             else:
                 done = False
@@ -124,6 +110,8 @@ cdef class CamelTokenizer:
                     splitted_word = segment = splitted_words[i_morpho] # .strip()
                     i_morpho += 1
                     segment_len = len(segment)
+                    if i_morpho < n_splitted:
+                        next_segment = splitted_words[i_morpho]
                     if doc_count==log_count:
                         print('.', i_raw, i_morpho, raw_token, splitted_word, segment, word_segments)
                     if segment_len>1 and segment.endswith('+'): # and len(word_segments)<2:
@@ -140,29 +128,13 @@ cdef class CamelTokenizer:
                     word += segment 
                     word_len += segment_len
                     total_output_len += segment_len
-                    if word.count('NOAN'):
-                        total_output_len -= word_len
-                        morpho_segments.append([raw_token])
-                        total_output_len += raw_len
-                        if splitted_words[i_morpho].startswith('+'):
-                            i_morpho += 1
-                        case = 'NOAN'
-                        done = True
-                    elif word_len == raw_len and not case == 'prefix':
-                        # self.normalize(word) == self.normalize(raw_token):
+                    if word_len == raw_len and not case == 'prefix':
                         if word == raw_token:
                             morpho_segments.append(word_segments)
+                            done = True
                         else:
-                            """
-                            restored_word_segments = []
-                            offset = 0
-                            for segment in word_segments:
-                                restored_word_segments.append(raw_token[offset:offset+len(segment)])
-                                offset += len(segment)
-                            morpho_segments.append(restored_word_segments)
-                            """
                             morpho_segments.append([raw_token])
-                        done = True
+                            done = True
                     elif word_len >= raw_len:
                         if case == 'prefix':
                             i_morpho -= 1
@@ -170,7 +142,7 @@ cdef class CamelTokenizer:
                         morpho_segments.append([raw_token])
                         total_output_len += raw_len
                         done = True
-                    elif word_len < raw_len and not case == 'prefix':
+                    elif word_len < raw_len and not case == 'prefix' and not next_segment.startswith('+'):
                         total_output_len -= word_len
                         morpho_segments.append([raw_token])
                         total_output_len += raw_len
