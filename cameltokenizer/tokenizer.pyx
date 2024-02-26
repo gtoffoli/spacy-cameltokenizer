@@ -118,7 +118,8 @@ cdef class CamelTokenizer:
                         segment = segment[:-1]
                         segment_len -= 1
                         case = 'prefix'
-                    elif segment_len>1 and segment.startswith('+') and word_len>0:
+                    # elif segment_len>1 and segment.startswith('+') and word_len>0: # no impact on alignment quality -6-
+                    elif segment_len>1 and segment.startswith('+'):
                         segment = segment[1:]
                         segment_len -= 1
                         case = 'suffix'
@@ -128,21 +129,35 @@ cdef class CamelTokenizer:
                     word += segment 
                     word_len += segment_len
                     total_output_len += segment_len
-                    if word_len == raw_len and not case == 'prefix':
+                    # if word_len == raw_len and not case == 'prefix': # no impact on alignment quality -3-
+                    if word_len == raw_len:
                         if word == raw_token:
                             morpho_segments.append(word_segments)
                             done = True
+                            """ no impact on alignment quality with ar_padt-ud-train and ar_padt-ud-dev -1-
+                        elif len(word_segments) > 1 and self.normalize(word) == self.normalize(raw_token):
+                            offset = 0
+                            projected_word_segments = []
+                            for segment in word_segments:
+                                projected_word_segments.append(raw_token[offset:offset+len(segment)])
+                                offset += len(segment)
+                            morpho_segments.append(projected_word_segments)
+                            done = True
+                            """
                         else:
                             morpho_segments.append([raw_token])
                             done = True
-                    elif word_len >= raw_len:
+                    # elif word_len >= raw_len: # after -1-, this is no more meaningful  -4- 
+                    elif word_len > raw_len:
+                        """ only +1 alignments in  ar_padt-ud-train -2-
                         if case == 'prefix':
                             i_morpho -= 1
+                        """
                         total_output_len -= word_len
                         morpho_segments.append([raw_token])
                         total_output_len += raw_len
                         done = True
-                    elif word_len < raw_len and not case == 'prefix' and not next_segment.startswith('+'):
+                    elif word_len < raw_len and not case == 'prefix' and not next_segment.startswith('+'): # this all is required -5-
                         total_output_len -= word_len
                         morpho_segments.append([raw_token])
                         total_output_len += raw_len
