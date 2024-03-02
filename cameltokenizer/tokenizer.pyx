@@ -28,7 +28,8 @@ cdef class CamelTokenizer:
         self.native_tokenizer = self.nlp.tokenizer
         self.vocab = self.nlp.vocab
         mle_msa = MLEDisambiguator.pretrained('calima-msa-r13')
-        self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=True)
+        # self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=True)
+        self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=False)
         self.count = 0
 
     def __call__(self, text, verbose=False):
@@ -42,7 +43,7 @@ cdef class CamelTokenizer:
         spaces = []
         morphos = self.atb_tokenizer.tokenize(raw_tokens)
         n_morphos = len(morphos)
-        alignments = self.align_tokens(raw_tokens, morphos, verbose=verbose, doc_count=self.count)
+        alignments = self.split_align_tokens(raw_tokens, morphos)
         if not alignments:
             return doc
         cdef Pool mem = Pool()
@@ -65,125 +66,23 @@ cdef class CamelTokenizer:
                 print(morpho_doc_text)
         return morpho_doc
 
-    def fix_morpho(self, word) -> list:
-        if word == 'إف':
-            return ['إ' ,'ف']
-        else:
-            return [word]
-
     def normalize(self, s):
         # return dediac_ar(normalize_unicode(s))
         return dediac_ar(s)
 
-    def align_tokens(self, raw_tokens, splitted_words, verbose=False, doc_count=0, log_count=None):
-        n_raw = len(raw_tokens)
-        n_splitted = len(splitted_words)
-        if verbose:
-            print(n_raw, n_splitted)
+    def split_align_tokens(self, raw_tokens, tokens):
         morpho_segments = []
-        i_raw = i_morpho = 0
-        total_raw_len = total_output_len = 0
-        for raw_token in raw_tokens:
-            if i_morpho >= n_splitted:
-                break
-            raw_len = len(raw_token)
-            total_raw_len += raw_len
-            splitted_word = splitted_words[i_morpho]
-            if splitted_word == raw_token or self.normalize(splitted_word) == self.normalize(raw_token) or splitted_word.count('NOAN'):
+        for i, token in enumerate(tokens):
+            raw_token = raw_tokens[i]
+            if not token.count('_'):
                 morpho_segments.append([raw_token])
-                total_output_len += raw_len
-                if doc_count==log_count:
-                    if splitted_word == raw_token and total_output_len == total_raw_len:
-                        print('+', i_raw, i_morpho, raw_token, splitted_word)
-                i_morpho += 1
             else:
-                done = False
-                word_segments = []
-                word = ''
-                word_len = 0
-                while not done:
-                    if i_morpho >= n_splitted:
-                        if word_segments:
-                            morpho_segments.append(word_segments)
-                            done = True
-                            continue
-                    splitted_word = segment = splitted_words[i_morpho] # .strip()
-                    i_morpho += 1
-                    segment_len = len(segment)
-                    if i_morpho < n_splitted:
-                        next_segment = splitted_words[i_morpho]
-                    if doc_count==log_count:
-                        print('.', i_raw, i_morpho, raw_token, splitted_word, segment, word_segments)
-                    if segment_len>1 and segment.endswith('+'): # and len(word_segments)<2:
-                        segment = segment[:-1]
-                        segment_len -= 1
-                        case = 'prefix'
-                    # elif segment_len>1 and segment.startswith('+') and word_len>0: # no impact on alignment quality -6-
-                    elif segment_len>1 and segment.startswith('+'):
-                        segment = segment[1:]
-                        segment_len -= 1
-                        case = 'suffix'
-                    else:
-                        case = 'body'
-                    word_segments.append(segment)
-                    word += segment 
-                    word_len += segment_len
-                    total_output_len += segment_len
-                    # if word_len == raw_len and not case == 'prefix': # no impact on alignment quality -3-
-                    if word_len == raw_len:
-                        if word == raw_token:
-                            morpho_segments.append(word_segments)
-                            done = True
-                            """ no impact on alignment quality with ar_padt-ud-train and ar_padt-ud-dev -1-
-                        elif len(word_segments) > 1 and self.normalize(word) == self.normalize(raw_token):
-                            offset = 0
-                            projected_word_segments = []
-                            for segment in word_segments:
-                                projected_word_segments.append(raw_token[offset:offset+len(segment)])
-                                offset += len(segment)
-                            morpho_segments.append(projected_word_segments)
-                            done = True
-                            """
-                        else:
-                            morpho_segments.append([raw_token])
-                            done = True
-                    # elif word_len >= raw_len: # after -1-, this is no more meaningful  -4- 
-                    elif word_len > raw_len:
-                        """ only +1 alignments in  ar_padt-ud-train -2-
-                        if case == 'prefix':
-                            i_morpho -= 1
-                        """
-                        total_output_len -= word_len
-                        morpho_segments.append([raw_token])
-                        total_output_len += raw_len
-                        done = True
-                    elif word_len < raw_len and not case == 'prefix' and not next_segment.startswith('+'): # this all is required -5-
-                        total_output_len -= word_len
-                        morpho_segments.append([raw_token])
-                        total_output_len += raw_len
-                        done = True
-                    if done:
-                        if doc_count==log_count:
-                            if total_output_len == total_raw_len:
-                                print('++', i_raw, i_morpho, raw_token, word)
-                            else:
-                                print('--', i_raw, i_morpho, raw_token, word)
-            if total_output_len != total_raw_len: # only diagnostic
-                raw_tokens_text = ''.join(raw_tokens[:i_raw])
-                morpho_segments_text = ''
-                for segments in morpho_segments:
-                    for segment in segments:
-                        morpho_segments_text += segment
-                print(splitted_words)
-                print('--- no alignment', doc_count, case, n_raw, n_splitted, i_raw, i_morpho, total_raw_len, total_output_len, raw_len, word_len, raw_token, splitted_word, segment, word, word_segments, morpho_segments)
-                i = 0
-                while i < i_raw and i < len(morpho_segments):
-                    print(i, raw_tokens[i], morpho_segments[i])
-                    i += 1
-                return None
-            i_raw += 1 
-            if verbose:
-                print(i_raw, i_morpho, raw_token)
+                token = dediac_ar(token)
+                if token.replace('+_', '').replace('_+', '') == raw_token:
+                    token = token.replace('+_', '_').replace('_+', '_')
+                    morpho_segments.append(token.split('_'))
+                else:
+                    morpho_segments.append([raw_token])
         return zip(raw_tokens, morpho_segments)
 
     def score(self, examples, **kwargs):
