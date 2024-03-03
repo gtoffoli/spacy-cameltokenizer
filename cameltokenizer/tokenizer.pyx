@@ -28,7 +28,6 @@ cdef class CamelTokenizer:
         self.native_tokenizer = self.nlp.tokenizer
         self.vocab = self.nlp.vocab
         mle_msa = MLEDisambiguator.pretrained('calima-msa-r13')
-        # self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=True)
         self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=False)
         self.count = 0
 
@@ -37,24 +36,28 @@ cdef class CamelTokenizer:
         # print self.count ,
         doc = self.native_tokenizer(text)
         raw_tokens = [t.text for t in doc if t.text]
+        raw_tokens, fix_map = self.fix_raw_tokens(raw_tokens)
         n_raw_tokens = len(raw_tokens)
         raw_tokens_text = ''.join(raw_tokens)
         words = []
         spaces = []
         morphos = self.atb_tokenizer.tokenize(raw_tokens)
-        n_morphos = len(morphos)
         alignments = self.split_align_tokens(raw_tokens, morphos)
         if not alignments:
             return doc
         cdef Pool mem = Pool()
         for i, alignment in enumerate(alignments):
-            raw_token, morpho_segments = alignment
-            n_segments = len(morpho_segments)
-            for j, segment in enumerate(morpho_segments):
+            raw_token, split_tokens = alignment
+            n_segments = len(split_tokens)
+            for j, segment in enumerate(split_tokens):
                 self.vocab.get(mem, segment)
                 words.append(segment)
                 if j+1 == n_segments:
-                    spaces.append(doc[i].whitespace_)
+                    i_raw = fix_map.get(i, None)
+                    if i_raw:
+                        spaces.append(doc[i_raw].whitespace_)
+                    else:
+                        spaces.append('')
                 else:
                     spaces.append('')
         morpho_doc = Doc(self.vocab, words=words, spaces=spaces)
@@ -70,20 +73,70 @@ cdef class CamelTokenizer:
         # return dediac_ar(normalize_unicode(s))
         return dediac_ar(s)
 
+    def fix_raw_tokens(self, tokens):
+        """ handle problems possibly occurring also in other spaCy tokenizers """
+        n_tokens = len(tokens)
+        fixed = []
+        fix_map = {}
+        j = 0
+        for i, token in enumerate(tokens):
+            if token.endswith(')-') and len(token) >2 and token.replace(')-', '').isalpha():
+                fixed.extend([token.replace(')-', ''), ')', '-'])
+                j += 3
+            elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:
+                fixed.extend([token.replace('".', ''), '"', '.'])
+                j += 3
+            elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+                fixed.extend([token.replace(').', ''), ')', '.'])
+                j += 3
+            elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():
+                fixed.extend([token[:-1], '.'])
+                j += 2
+            else:
+                fixed.append(token)
+                j += 1
+            fix_map[j-1] = i
+        return fixed, fix_map
+
     def split_align_tokens(self, raw_tokens, tokens):
-        morpho_segments = []
+        split_tokens = []
         for i, token in enumerate(tokens):
             raw_token = raw_tokens[i]
             if not token.count('_'):
-                morpho_segments.append([raw_token])
+                split_tokens.append([raw_token])
             else:
                 token = dediac_ar(token)
                 if token.replace('+_', '').replace('_+', '') == raw_token:
                     token = token.replace('+_', '_').replace('_+', '_')
-                    morpho_segments.append(token.split('_'))
+                    split_tokens.append(token.split('_'))
                 else:
-                    morpho_segments.append([raw_token])
-        return zip(raw_tokens, morpho_segments)
+                    split_tokens.append([raw_token])
+            split_tokens = self.improve_morphological_tokenization(split_tokens)
+        return zip(raw_tokens, split_tokens)
+
+    def improve_morphological_tokenization(self, split_tokens):
+        """ fix a few cases of over-splitting; split some more prefixes and suffixes """
+        fixed_split_tokens = []
+        for split_token in split_tokens:
+            n_segments = len(split_token)
+            segment = split_token[0]
+            if n_segments == 2 and segment == 'عند' and split_token[1] == 'ما':
+                split_token = ['عندما']
+            elif n_segments == 1:
+                if segment.startswith('لال'):
+                    split_token = ['ل', segment[1:]]
+                elif segment.count('،') == 1:
+                    parts = segment.split('،')
+                    if parts[0].isalpha() and parts[1].isalpha():
+                        split_token = [parts[0], '،', parts[1]]
+                elif segment.endswith('ةه') or segment.endswith('ىه'):
+                    split_token = [segment[:-1], 'ه']
+                elif segment.endswith('ةهم') or segment.endswith('يهم'):
+                    split_token = [segment[:-2], segment[-2:]]
+                elif segment.endswith('يهما'):
+                    split_token = [segment[:-3], segment[-3:]]
+            fixed_split_tokens.append(split_token)
+        return fixed_split_tokens
 
     def score(self, examples, **kwargs):
         validate_examples(examples, "Tokenizer.score")
