@@ -83,14 +83,20 @@ cdef class CamelTokenizer:
             if token.endswith(')-') and len(token) >2 and token.replace(')-', '').isalpha():
                 fixed.extend([token.replace(')-', ''), ')', '-'])
                 j += 3
-            elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:
+            elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:
                 fixed.extend([token.replace('".', ''), '"', '.'])
                 j += 3
-            elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+            elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
                 fixed.extend([token.replace(').', ''), ')', '.'])
                 j += 3
-            elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():
+            elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:
                 fixed.extend([token[:-1], '.'])
+                j += 2
+            elif token.startswith('و') and len(token) >= 2 and token[1] in ['(', '"']:
+                fixed.extend(['و', token[1:]])
+                j += 2
+            elif (token.startswith('ب') or token.startswith('ل'))and len(token) >= 2 and token[1:].isdecimal():
+                fixed.extend([token[0], token[1:]])
                 j += 2
             else:
                 fixed.append(token)
@@ -131,10 +137,30 @@ cdef class CamelTokenizer:
                         split_token = [parts[0], '،', parts[1]]
                 elif segment.endswith('ةه') or segment.endswith('ىه'):
                     split_token = [segment[:-1], 'ه']
-                elif segment.endswith('ةهم') or segment.endswith('يهم'):
+                elif segment.endswith('zzz'):
+                    split_token = [segment[:-1], segment[-1:]]
+                elif segment.endswith('ةهم') or segment.endswith('يهم') or segment.endswith('ةها'):
                     split_token = [segment[:-2], segment[-2:]]
+                elif segment.endswith('ىها'):
+                    split_token = [segment[:-2], segment[-2:]]
+                elif segment.endswith('يها'):
+                    split_token = [segment[:-2], segment[-2:]]
+                elif segment.endswith('ينا'):
+                    split_token = [segment[:-2], segment[-2:]]
+                elif segment.endswith('اها'):
+                    split_token = [segment[:-2], segment[-2:]]
+                elif segment.endswith('اةي'):
+                    split_token = [segment[:-1], segment[-1:]]
+                elif segment.endswith('ليه'):
+                    split_token = [segment[:-1], segment[-1:]]
                 elif segment.endswith('يهما'):
                     split_token = [segment[:-3], segment[-3:]]
+                elif segment.endswith('ةهما'):
+                    split_token = [segment[:-3], segment[-3:]]
+                elif segment.endswith('اتنا'):
+                    split_token = [segment[:-2], segment[-2:]]
+                elif segment.endswith('اتهم'):
+                    split_token = [segment[:-2], segment[-2:]]
             fixed_split_tokens.append(split_token)
         return fixed_split_tokens
 

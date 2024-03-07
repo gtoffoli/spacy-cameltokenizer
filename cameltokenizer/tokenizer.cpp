@@ -2507,7 +2507,7 @@ struct __pyx_obj_14cameltokenizer_9tokenizer_CamelTokenizer {
 };
 
 
-/* "cameltokenizer/tokenizer.pyx":145
+/* "cameltokenizer/tokenizer.pyx":171
  *         return Scorer.score_tokenization(examples)
  * 
  *     def pipe(self, texts, batch_size=1000):             # <<<<<<<<<<<<<<
@@ -2526,7 +2526,7 @@ struct __pyx_obj_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe {
 };
 
 
-/* "cameltokenizer/tokenizer.pyx":171
+/* "cameltokenizer/tokenizer.pyx":197
  *             file_.write(self.to_bytes(**kwargs))
  * 
  *     def to_bytes(self, *, exclude=tuple()):             # <<<<<<<<<<<<<<
@@ -3103,6 +3103,22 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
         PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
         int has_cstart, int has_cstop, int wraparound);
 
+/* IncludeStringH.proto */
+#include <string.h>
+
+/* BytesEquals.proto */
+static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals);
+
+/* UnicodeEquals.proto */
+static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals);
+
+/* StrEquals.proto */
+#if PY_MAJOR_VERSION >= 3
+#define __Pyx_PyString_Equals __Pyx_PyUnicode_Equals
+#else
+#define __Pyx_PyString_Equals __Pyx_PyBytes_Equals
+#endif
+
 /* PyIntBinop.proto */
 #if !CYTHON_COMPILING_IN_PYPY
 static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
@@ -3119,22 +3135,6 @@ static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name
 
 /* append.proto */
 static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x);
-
-/* IncludeStringH.proto */
-#include <string.h>
-
-/* BytesEquals.proto */
-static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals);
-
-/* UnicodeEquals.proto */
-static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals);
-
-/* StrEquals.proto */
-#if PY_MAJOR_VERSION >= 3
-#define __Pyx_PyString_Equals __Pyx_PyUnicode_Equals
-#else
-#define __Pyx_PyString_Equals __Pyx_PyBytes_Equals
-#endif
 
 /* PyIntCompare.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_EqObjC(PyObject *op1, PyObject *op2, long intval, long inplace);
@@ -3928,27 +3928,41 @@ static const char __pyx_k__9[] = ".";
 static const char __pyx_k_id[] = "id";
 static const char __pyx_k_wb[] = "wb";
 static const char __pyx_k__10[] = ").";
-static const char __pyx_k__13[] = "_";
-static const char __pyx_k__14[] = "+_";
-static const char __pyx_k__16[] = "_+";
-static const char __pyx_k__20[] = "\330\271\331\206\330\257";
-static const char __pyx_k__21[] = "\331\205\330\247";
-static const char __pyx_k__22[] = "\330\271\331\206\330\257\331\205\330\247";
-static const char __pyx_k__23[] = "\331\204\330\247\331\204";
-static const char __pyx_k__24[] = "\331\204";
-static const char __pyx_k__26[] = "\330\214";
-static const char __pyx_k__27[] = "\330\251\331\207";
-static const char __pyx_k__28[] = "\331\211\331\207";
-static const char __pyx_k__29[] = "\331\207";
-static const char __pyx_k__30[] = "\330\251\331\207\331\205";
-static const char __pyx_k__31[] = "\331\212\331\207\331\205";
-static const char __pyx_k__34[] = "\331\212\331\207\331\205\330\247";
+static const char __pyx_k__13[] = "\331\210";
+static const char __pyx_k__14[] = "(";
+static const char __pyx_k__16[] = "\330\250";
+static const char __pyx_k__17[] = "\331\204";
+static const char __pyx_k__18[] = "_";
+static const char __pyx_k__19[] = "+_";
+static const char __pyx_k__21[] = "_+";
+static const char __pyx_k__25[] = "\330\271\331\206\330\257";
+static const char __pyx_k__26[] = "\331\205\330\247";
+static const char __pyx_k__27[] = "\330\271\331\206\330\257\331\205\330\247";
+static const char __pyx_k__28[] = "\331\204\330\247\331\204";
+static const char __pyx_k__29[] = "\330\214";
+static const char __pyx_k__30[] = "\330\251\331\207";
+static const char __pyx_k__31[] = "\331\211\331\207";
+static const char __pyx_k__32[] = "\331\207";
+static const char __pyx_k__34[] = "\330\251\331\207\331\205";
+static const char __pyx_k__35[] = "\331\212\331\207\331\205";
+static const char __pyx_k__36[] = "\330\251\331\207\330\247";
+static const char __pyx_k__39[] = "\331\211\331\207\330\247";
+static const char __pyx_k__40[] = "\331\212\331\207\330\247";
+static const char __pyx_k__41[] = "\331\212\331\206\330\247";
+static const char __pyx_k__42[] = "\330\247\331\207\330\247";
+static const char __pyx_k__43[] = "\330\247\330\251\331\212";
+static const char __pyx_k__44[] = "\331\204\331\212\331\207";
+static const char __pyx_k__45[] = "\331\212\331\207\331\205\330\247";
+static const char __pyx_k__48[] = "\330\251\331\207\331\205\330\247";
+static const char __pyx_k__49[] = "\330\247\330\252\331\206\330\247";
+static const char __pyx_k__50[] = "\330\247\330\252\331\207\331\205";
 static const char __pyx_k_end[] = "end";
 static const char __pyx_k_get[] = "get";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_nlp[] = "nlp";
 static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_zip[] = "zip";
+static const char __pyx_k_zzz[] = "zzz";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_base[] = "base";
 static const char __pyx_k_dict[] = "__dict__";
@@ -4189,24 +4203,37 @@ static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_n_s_View_MemoryView;
 static PyObject *__pyx_n_s_Vocab;
 static PyObject *__pyx_kp_s__10;
-static PyObject *__pyx_n_s__13;
+static PyObject *__pyx_kp_s__13;
 static PyObject *__pyx_kp_s__14;
 static PyObject *__pyx_kp_s__16;
+static PyObject *__pyx_kp_s__17;
+static PyObject *__pyx_n_s__18;
+static PyObject *__pyx_kp_s__19;
 static PyObject *__pyx_kp_s__2;
-static PyObject *__pyx_kp_s__20;
 static PyObject *__pyx_kp_s__21;
-static PyObject *__pyx_kp_s__22;
-static PyObject *__pyx_kp_s__23;
-static PyObject *__pyx_kp_s__24;
+static PyObject *__pyx_kp_s__25;
 static PyObject *__pyx_kp_s__26;
 static PyObject *__pyx_kp_s__27;
 static PyObject *__pyx_kp_s__28;
 static PyObject *__pyx_kp_s__29;
 static PyObject *__pyx_kp_s__30;
 static PyObject *__pyx_kp_s__31;
+static PyObject *__pyx_kp_s__32;
 static PyObject *__pyx_kp_s__34;
+static PyObject *__pyx_kp_s__35;
+static PyObject *__pyx_kp_s__36;
+static PyObject *__pyx_kp_s__39;
 static PyObject *__pyx_kp_s__4;
+static PyObject *__pyx_kp_s__40;
+static PyObject *__pyx_kp_s__41;
+static PyObject *__pyx_kp_s__42;
+static PyObject *__pyx_kp_s__43;
+static PyObject *__pyx_kp_s__44;
+static PyObject *__pyx_kp_s__45;
+static PyObject *__pyx_kp_s__48;
+static PyObject *__pyx_kp_s__49;
 static PyObject *__pyx_kp_s__5;
+static PyObject *__pyx_kp_s__50;
 static PyObject *__pyx_kp_s__6;
 static PyObject *__pyx_kp_s__8;
 static PyObject *__pyx_kp_s__9;
@@ -4375,6 +4402,7 @@ static PyObject *__pyx_n_s_whitespace;
 static PyObject *__pyx_n_s_words;
 static PyObject *__pyx_n_s_write;
 static PyObject *__pyx_n_s_zip;
+static PyObject *__pyx_n_s_zzz;
 static int __pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer___init__(struct __pyx_obj_14cameltokenizer_9tokenizer_CamelTokenizer *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_nlp); /* proto */
 static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_2__call__(struct __pyx_obj_14cameltokenizer_9tokenizer_CamelTokenizer *__pyx_v_self, PyObject *__pyx_v_text, PyObject *__pyx_v_verbose); /* proto */
 static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_4normalize(CYTHON_UNUSED struct __pyx_obj_14cameltokenizer_9tokenizer_CamelTokenizer *__pyx_v_self, PyObject *__pyx_v_s); /* proto */
@@ -4451,75 +4479,76 @@ static PyObject *__pyx_int_184977713;
 static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_int_neg_2;
 static PyObject *__pyx_int_neg_3;
-static PyObject *__pyx_k__39;
+static PyObject *__pyx_k__53;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_slice__12;
-static PyObject *__pyx_slice__25;
-static PyObject *__pyx_slice__32;
+static PyObject *__pyx_slice__15;
 static PyObject *__pyx_slice__33;
-static PyObject *__pyx_slice__35;
-static PyObject *__pyx_slice__36;
-static PyObject *__pyx_slice__58;
+static PyObject *__pyx_slice__37;
+static PyObject *__pyx_slice__38;
+static PyObject *__pyx_slice__46;
+static PyObject *__pyx_slice__47;
+static PyObject *__pyx_slice__72;
 static PyObject *__pyx_tuple__11;
-static PyObject *__pyx_tuple__15;
-static PyObject *__pyx_tuple__17;
-static PyObject *__pyx_tuple__18;
-static PyObject *__pyx_tuple__19;
-static PyObject *__pyx_tuple__38;
-static PyObject *__pyx_tuple__40;
-static PyObject *__pyx_tuple__42;
-static PyObject *__pyx_tuple__43;
-static PyObject *__pyx_tuple__44;
-static PyObject *__pyx_tuple__45;
-static PyObject *__pyx_tuple__46;
-static PyObject *__pyx_tuple__47;
-static PyObject *__pyx_tuple__48;
-static PyObject *__pyx_tuple__49;
-static PyObject *__pyx_tuple__50;
-static PyObject *__pyx_tuple__51;
+static PyObject *__pyx_tuple__20;
+static PyObject *__pyx_tuple__22;
+static PyObject *__pyx_tuple__23;
+static PyObject *__pyx_tuple__24;
 static PyObject *__pyx_tuple__52;
-static PyObject *__pyx_tuple__53;
 static PyObject *__pyx_tuple__54;
-static PyObject *__pyx_tuple__55;
 static PyObject *__pyx_tuple__56;
 static PyObject *__pyx_tuple__57;
+static PyObject *__pyx_tuple__58;
 static PyObject *__pyx_tuple__59;
 static PyObject *__pyx_tuple__60;
 static PyObject *__pyx_tuple__61;
 static PyObject *__pyx_tuple__62;
+static PyObject *__pyx_tuple__63;
 static PyObject *__pyx_tuple__64;
+static PyObject *__pyx_tuple__65;
 static PyObject *__pyx_tuple__66;
+static PyObject *__pyx_tuple__67;
 static PyObject *__pyx_tuple__68;
+static PyObject *__pyx_tuple__69;
 static PyObject *__pyx_tuple__70;
-static PyObject *__pyx_tuple__72;
+static PyObject *__pyx_tuple__71;
 static PyObject *__pyx_tuple__73;
+static PyObject *__pyx_tuple__74;
 static PyObject *__pyx_tuple__75;
-static PyObject *__pyx_tuple__77;
-static PyObject *__pyx_tuple__79;
-static PyObject *__pyx_tuple__81;
+static PyObject *__pyx_tuple__76;
+static PyObject *__pyx_tuple__78;
+static PyObject *__pyx_tuple__80;
 static PyObject *__pyx_tuple__82;
 static PyObject *__pyx_tuple__84;
 static PyObject *__pyx_tuple__86;
 static PyObject *__pyx_tuple__87;
-static PyObject *__pyx_tuple__88;
 static PyObject *__pyx_tuple__89;
-static PyObject *__pyx_tuple__90;
 static PyObject *__pyx_tuple__91;
-static PyObject *__pyx_codeobj__37;
-static PyObject *__pyx_codeobj__41;
-static PyObject *__pyx_codeobj__63;
-static PyObject *__pyx_codeobj__65;
-static PyObject *__pyx_codeobj__67;
-static PyObject *__pyx_codeobj__69;
-static PyObject *__pyx_codeobj__71;
-static PyObject *__pyx_codeobj__74;
-static PyObject *__pyx_codeobj__76;
-static PyObject *__pyx_codeobj__78;
-static PyObject *__pyx_codeobj__80;
+static PyObject *__pyx_tuple__93;
+static PyObject *__pyx_tuple__95;
+static PyObject *__pyx_tuple__96;
+static PyObject *__pyx_tuple__98;
+static PyObject *__pyx_tuple__100;
+static PyObject *__pyx_tuple__101;
+static PyObject *__pyx_tuple__102;
+static PyObject *__pyx_tuple__103;
+static PyObject *__pyx_tuple__104;
+static PyObject *__pyx_tuple__105;
+static PyObject *__pyx_codeobj__51;
+static PyObject *__pyx_codeobj__55;
+static PyObject *__pyx_codeobj__77;
+static PyObject *__pyx_codeobj__79;
+static PyObject *__pyx_codeobj__81;
 static PyObject *__pyx_codeobj__83;
 static PyObject *__pyx_codeobj__85;
+static PyObject *__pyx_codeobj__88;
+static PyObject *__pyx_codeobj__90;
 static PyObject *__pyx_codeobj__92;
+static PyObject *__pyx_codeobj__94;
+static PyObject *__pyx_codeobj__97;
+static PyObject *__pyx_codeobj__99;
+static PyObject *__pyx_codeobj__106;
 /* Late includes */
 
 /* "cameltokenizer/tokenizer.pyx":25
@@ -5853,7 +5882,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_7fix_raw_
 }
 
 static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_tokens(CYTHON_UNUSED struct __pyx_obj_14cameltokenizer_9tokenizer_CamelTokenizer *__pyx_v_self, PyObject *__pyx_v_tokens) {
-  Py_ssize_t __pyx_v_n_tokens;
+  CYTHON_UNUSED Py_ssize_t __pyx_v_n_tokens;
   PyObject *__pyx_v_fixed = NULL;
   PyObject *__pyx_v_fix_map = NULL;
   PyObject *__pyx_v_j = NULL;
@@ -5874,6 +5903,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
   int __pyx_t_11;
   int __pyx_t_12;
   int __pyx_t_13;
+  int __pyx_t_14;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6053,7 +6083,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
  *             if token.endswith(')-') and len(token) >2 and token.replace(')-', '').isalpha():
  *                 fixed.extend([token.replace(')-', ''), ')', '-'])             # <<<<<<<<<<<<<<
  *                 j += 3
- *             elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:
  */
       __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
@@ -6070,7 +6100,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
  *             if token.endswith(')-') and len(token) >2 and token.replace(')-', '').isalpha():
  *                 fixed.extend([token.replace(')-', ''), ')', '-'])
  *                 j += 3             # <<<<<<<<<<<<<<
- *             elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace('".', ''), '"', '.'])
  */
       __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_3, 3, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 85, __pyx_L1_error)
@@ -6091,7 +6121,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
     /* "cameltokenizer/tokenizer.pyx":86
  *                 fixed.extend([token.replace(')-', ''), ')', '-'])
  *                 j += 3
- *             elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:             # <<<<<<<<<<<<<<
+ *             elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:             # <<<<<<<<<<<<<<
  *                 fixed.extend([token.replace('".', ''), '"', '.'])
  *                 j += 3
  */
@@ -6121,36 +6151,22 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
     }
     __pyx_t_10 = PyObject_Length(__pyx_v_token); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 86, __pyx_L1_error)
     __pyx_t_9 = ((__pyx_t_10 > 2) != 0);
-    if (__pyx_t_9) {
-    } else {
-      __pyx_t_6 = __pyx_t_9;
-      goto __pyx_L9_bool_binop_done;
-    }
-    __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 86, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n_tokens); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = PyObject_RichCompare(__pyx_t_7, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 86, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_6 = __pyx_t_9;
     __pyx_L9_bool_binop_done:;
     if (__pyx_t_6) {
 
       /* "cameltokenizer/tokenizer.pyx":87
  *                 j += 3
- *             elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace('".', ''), '"', '.'])             # <<<<<<<<<<<<<<
  *                 j += 3
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 87, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_13 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_t_5); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
       __pyx_t_12 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_kp_s__8); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
       __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_fixed, __pyx_kp_s__9); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
@@ -6158,10 +6174,10 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
       (void)((__pyx_t_13 | (__pyx_t_12 | __pyx_t_11)));
 
       /* "cameltokenizer/tokenizer.pyx":88
- *             elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace('".', ''), '"', '.'])
  *                 j += 3             # <<<<<<<<<<<<<<
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace(').', ''), ')', '.'])
  */
       __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_3, 3, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
@@ -6172,7 +6188,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
       /* "cameltokenizer/tokenizer.pyx":86
  *                 fixed.extend([token.replace(')-', ''), ')', '-'])
  *                 j += 3
- *             elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:             # <<<<<<<<<<<<<<
+ *             elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:             # <<<<<<<<<<<<<<
  *                 fixed.extend([token.replace('".', ''), '"', '.'])
  *                 j += 3
  */
@@ -6182,88 +6198,74 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
     /* "cameltokenizer/tokenizer.pyx":89
  *                 fixed.extend([token.replace('".', ''), '"', '.'])
  *                 j += 3
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:             # <<<<<<<<<<<<<<
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:             # <<<<<<<<<<<<<<
  *                 fixed.extend([token.replace(').', ''), ')', '.'])
  *                 j += 3
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_endswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 89, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_7 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_8);
-      if (likely(__pyx_t_7)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-        __Pyx_INCREF(__pyx_t_7);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_endswith); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+        __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_8, function);
+        __Pyx_DECREF_SET(__pyx_t_7, function);
       }
     }
-    __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_7, __pyx_kp_s__10) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__10);
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_kp_s__10) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_kp_s__10);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_9) {
     } else {
       __pyx_t_6 = __pyx_t_9;
-      goto __pyx_L12_bool_binop_done;
+      goto __pyx_L11_bool_binop_done;
     }
     __pyx_t_10 = PyObject_Length(__pyx_v_token); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 89, __pyx_L1_error)
     __pyx_t_9 = ((__pyx_t_10 > 2) != 0);
-    if (__pyx_t_9) {
-    } else {
-      __pyx_t_6 = __pyx_t_9;
-      goto __pyx_L12_bool_binop_done;
-    }
-    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = PyInt_FromSsize_t(__pyx_v_n_tokens); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 89, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_5, __pyx_t_8, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 89, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = __pyx_t_9;
-    __pyx_L12_bool_binop_done:;
+    __pyx_L11_bool_binop_done:;
     if (__pyx_t_6) {
 
       /* "cameltokenizer/tokenizer.pyx":90
  *                 j += 3
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace(').', ''), ')', '.'])             # <<<<<<<<<<<<<<
  *                 j += 3
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 90, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_11 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_t_8); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 90, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_11 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 90, __pyx_L1_error)
       __pyx_t_12 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_kp_s__4); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 90, __pyx_L1_error)
       __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_fixed, __pyx_kp_s__9); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 90, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       (void)((__pyx_t_11 | (__pyx_t_12 | __pyx_t_13)));
 
       /* "cameltokenizer/tokenizer.pyx":91
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace(').', ''), ')', '.'])
  *                 j += 3             # <<<<<<<<<<<<<<
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:
  *                 fixed.extend([token[:-1], '.'])
  */
-      __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_3, 3, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 91, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_8);
-      __pyx_t_8 = 0;
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_3, 3, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_7);
+      __pyx_t_7 = 0;
 
       /* "cameltokenizer/tokenizer.pyx":89
  *                 fixed.extend([token.replace('".', ''), '"', '.'])
  *                 j += 3
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:             # <<<<<<<<<<<<<<
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:             # <<<<<<<<<<<<<<
  *                 fixed.extend([token.replace(').', ''), ')', '.'])
  *                 j += 3
  */
@@ -6273,118 +6275,322 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
     /* "cameltokenizer/tokenizer.pyx":92
  *                 fixed.extend([token.replace(').', ''), ')', '.'])
  *                 j += 3
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():             # <<<<<<<<<<<<<<
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:             # <<<<<<<<<<<<<<
  *                 fixed.extend([token[:-1], '.'])
  *                 j += 2
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_endswith); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_7);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-        __Pyx_INCREF(__pyx_t_5);
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_endswith); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_7, function);
+        __Pyx_DECREF_SET(__pyx_t_5, function);
       }
     }
-    __pyx_t_8 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_5, __pyx_kp_s__9) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_kp_s__9);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_7 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_kp_s__9) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_kp_s__9);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_9) {
     } else {
       __pyx_t_6 = __pyx_t_9;
-      goto __pyx_L15_bool_binop_done;
+      goto __pyx_L13_bool_binop_done;
     }
     __pyx_t_10 = PyObject_Length(__pyx_v_token); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 92, __pyx_L1_error)
     __pyx_t_9 = ((__pyx_t_10 >= 2) != 0);
     if (__pyx_t_9) {
     } else {
       __pyx_t_6 = __pyx_t_9;
-      goto __pyx_L15_bool_binop_done;
+      goto __pyx_L13_bool_binop_done;
     }
-    __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_token, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_isdecimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_7 = PyInt_FromSsize_t(__pyx_v_n_tokens); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_8, __pyx_t_7, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (__pyx_t_9) {
-    } else {
-      __pyx_t_6 = __pyx_t_9;
-      goto __pyx_L15_bool_binop_done;
-    }
-    __pyx_t_7 = __Pyx_PyObject_GetSlice(__pyx_v_token, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_isdecimal); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = NULL;
+    __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_8);
-      if (likely(__pyx_t_7)) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_5)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
-        __Pyx_INCREF(__pyx_t_7);
+        __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_8, function);
       }
     }
-    __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = __pyx_t_9;
-    __pyx_L15_bool_binop_done:;
+    __pyx_L13_bool_binop_done:;
     if (__pyx_t_6) {
 
       /* "cameltokenizer/tokenizer.pyx":93
  *                 j += 3
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:
  *                 fixed.extend([token[:-1], '.'])             # <<<<<<<<<<<<<<
  *                 j += 2
- *             else:
+ *             elif token.startswith('') and len(token) >= 2 and token[1] in ['(', '"']:
  */
-      __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_token, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 93, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_13 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_t_5); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 93, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_7 = __Pyx_PyObject_GetSlice(__pyx_v_token, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_13 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_t_7); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 93, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_fixed, __pyx_kp_s__9); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 93, __pyx_L1_error)
       (void)((__pyx_t_13 | __pyx_t_12));
 
       /* "cameltokenizer/tokenizer.pyx":94
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:
  *                 fixed.extend([token[:-1], '.'])
  *                 j += 2             # <<<<<<<<<<<<<<
- *             else:
- *                 fixed.append(token)
+ *             elif token.startswith('') and len(token) >= 2 and token[1] in ['(', '"']:
+ *                 fixed.extend(['', token[1:]])
  */
-      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_2, 2, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 94, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_5);
-      __pyx_t_5 = 0;
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_2, 2, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 94, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_7);
+      __pyx_t_7 = 0;
 
       /* "cameltokenizer/tokenizer.pyx":92
  *                 fixed.extend([token.replace(').', ''), ')', '.'])
  *                 j += 3
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():             # <<<<<<<<<<<<<<
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:             # <<<<<<<<<<<<<<
  *                 fixed.extend([token[:-1], '.'])
  *                 j += 2
  */
       goto __pyx_L5;
     }
 
-    /* "cameltokenizer/tokenizer.pyx":96
+    /* "cameltokenizer/tokenizer.pyx":95
+ *                 fixed.extend([token[:-1], '.'])
+ *                 j += 2
+ *             elif token.startswith('') and len(token) >= 2 and token[1] in ['(', '"']:             # <<<<<<<<<<<<<<
+ *                 fixed.extend(['', token[1:]])
+ *                 j += 2
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_startswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
+      }
+    }
+    __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_5, __pyx_kp_s__13) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__13);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (__pyx_t_9) {
+    } else {
+      __pyx_t_6 = __pyx_t_9;
+      goto __pyx_L16_bool_binop_done;
+    }
+    __pyx_t_10 = PyObject_Length(__pyx_v_token); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_9 = ((__pyx_t_10 >= 2) != 0);
+    if (__pyx_t_9) {
+    } else {
+      __pyx_t_6 = __pyx_t_9;
+      goto __pyx_L16_bool_binop_done;
+    }
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_token, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_14 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_kp_s__14, Py_EQ)); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+    if (!__pyx_t_14) {
+    } else {
+      __pyx_t_9 = __pyx_t_14;
+      goto __pyx_L19_bool_binop_done;
+    }
+    __pyx_t_14 = (__Pyx_PyString_Equals(__pyx_t_7, __pyx_kp_s__8, Py_EQ)); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_9 = __pyx_t_14;
+    __pyx_L19_bool_binop_done:;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_14 = (__pyx_t_9 != 0);
+    __pyx_t_6 = __pyx_t_14;
+    __pyx_L16_bool_binop_done:;
+    if (__pyx_t_6) {
+
+      /* "cameltokenizer/tokenizer.pyx":96
+ *                 j += 2
+ *             elif token.startswith('') and len(token) >= 2 and token[1] in ['(', '"']:
+ *                 fixed.extend(['', token[1:]])             # <<<<<<<<<<<<<<
+ *                 j += 2
+ *             elif (token.startswith('') or token.startswith(''))and len(token) >= 2 and token[1:].isdecimal():
+ */
+      __pyx_t_12 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_kp_s__13); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetSlice(__pyx_v_token, 1, 0, NULL, NULL, &__pyx_slice__15, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 96, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_fixed, __pyx_t_7); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      (void)((__pyx_t_12 | __pyx_t_13));
+
+      /* "cameltokenizer/tokenizer.pyx":97
+ *             elif token.startswith('') and len(token) >= 2 and token[1] in ['(', '"']:
+ *                 fixed.extend(['', token[1:]])
+ *                 j += 2             # <<<<<<<<<<<<<<
+ *             elif (token.startswith('') or token.startswith(''))and len(token) >= 2 and token[1:].isdecimal():
+ *                 fixed.extend([token[0], token[1:]])
+ */
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_2, 2, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_7);
+      __pyx_t_7 = 0;
+
+      /* "cameltokenizer/tokenizer.pyx":95
+ *                 fixed.extend([token[:-1], '.'])
+ *                 j += 2
+ *             elif token.startswith('') and len(token) >= 2 and token[1] in ['(', '"']:             # <<<<<<<<<<<<<<
+ *                 fixed.extend(['', token[1:]])
+ *                 j += 2
+ */
+      goto __pyx_L5;
+    }
+
+    /* "cameltokenizer/tokenizer.pyx":98
+ *                 fixed.extend(['', token[1:]])
+ *                 j += 2
+ *             elif (token.startswith('') or token.startswith(''))and len(token) >= 2 and token[1:].isdecimal():             # <<<<<<<<<<<<<<
+ *                 fixed.extend([token[0], token[1:]])
+ *                 j += 2
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_startswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
+      }
+    }
+    __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_5, __pyx_kp_s__16) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__16);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (!__pyx_t_14) {
+    } else {
+      goto __pyx_L22_next_and;
+    }
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_startswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_8);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_8, function);
+      }
+    }
+    __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_5, __pyx_kp_s__17) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__17);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (__pyx_t_14) {
+    } else {
+      __pyx_t_6 = __pyx_t_14;
+      goto __pyx_L21_bool_binop_done;
+    }
+    __pyx_L22_next_and:;
+    __pyx_t_10 = PyObject_Length(__pyx_v_token); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_14 = ((__pyx_t_10 >= 2) != 0);
+    if (__pyx_t_14) {
+    } else {
+      __pyx_t_6 = __pyx_t_14;
+      goto __pyx_L21_bool_binop_done;
+    }
+    __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_token, 1, 0, NULL, NULL, &__pyx_slice__15, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_isdecimal); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_8 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_8)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_8);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_5, function);
+      }
+    }
+    __pyx_t_7 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_6 = __pyx_t_14;
+    __pyx_L21_bool_binop_done:;
+    if (__pyx_t_6) {
+
+      /* "cameltokenizer/tokenizer.pyx":99
+ *                 j += 2
+ *             elif (token.startswith('') or token.startswith(''))and len(token) >= 2 and token[1:].isdecimal():
+ *                 fixed.extend([token[0], token[1:]])             # <<<<<<<<<<<<<<
+ *                 j += 2
+ *             else:
+ */
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_token, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_13 = __Pyx_ListComp_Append(__pyx_v_fixed, __pyx_t_7); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_token, 1, 0, NULL, NULL, &__pyx_slice__15, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_fixed, __pyx_t_5); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 99, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      (void)((__pyx_t_13 | __pyx_t_12));
+
+      /* "cameltokenizer/tokenizer.pyx":100
+ *             elif (token.startswith('') or token.startswith(''))and len(token) >= 2 and token[1:].isdecimal():
+ *                 fixed.extend([token[0], token[1:]])
+ *                 j += 2             # <<<<<<<<<<<<<<
+ *             else:
+ *                 fixed.append(token)
+ */
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_2, 2, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 100, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_7);
+      __pyx_t_7 = 0;
+
+      /* "cameltokenizer/tokenizer.pyx":98
+ *                 fixed.extend(['', token[1:]])
+ *                 j += 2
+ *             elif (token.startswith('') or token.startswith(''))and len(token) >= 2 and token[1:].isdecimal():             # <<<<<<<<<<<<<<
+ *                 fixed.extend([token[0], token[1:]])
+ *                 j += 2
+ */
+      goto __pyx_L5;
+    }
+
+    /* "cameltokenizer/tokenizer.pyx":102
  *                 j += 2
  *             else:
  *                 fixed.append(token)             # <<<<<<<<<<<<<<
@@ -6392,33 +6598,33 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
  *             fix_map[j-1] = i
  */
     /*else*/ {
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_fixed, __pyx_v_token); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_fixed, __pyx_v_token); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 102, __pyx_L1_error)
 
-      /* "cameltokenizer/tokenizer.pyx":97
+      /* "cameltokenizer/tokenizer.pyx":103
  *             else:
  *                 fixed.append(token)
  *                 j += 1             # <<<<<<<<<<<<<<
  *             fix_map[j-1] = i
  *         return fixed, fix_map
  */
-      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_5);
-      __pyx_t_5 = 0;
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_j, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF_SET(__pyx_v_j, __pyx_t_7);
+      __pyx_t_7 = 0;
     }
     __pyx_L5:;
 
-    /* "cameltokenizer/tokenizer.pyx":98
+    /* "cameltokenizer/tokenizer.pyx":104
  *                 fixed.append(token)
  *                 j += 1
  *             fix_map[j-1] = i             # <<<<<<<<<<<<<<
  *         return fixed, fix_map
  * 
  */
-    __pyx_t_5 = __Pyx_PyInt_SubtractObjC(__pyx_v_j, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    if (unlikely(PyDict_SetItem(__pyx_v_fix_map, __pyx_t_5, __pyx_v_i) < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_7 = __Pyx_PyInt_SubtractObjC(__pyx_v_j, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (unlikely(PyDict_SetItem(__pyx_v_fix_map, __pyx_t_7, __pyx_v_i) < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
     /* "cameltokenizer/tokenizer.pyx":82
  *         fix_map = {}
@@ -6431,7 +6637,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":99
+  /* "cameltokenizer/tokenizer.pyx":105
  *                 j += 1
  *             fix_map[j-1] = i
  *         return fixed, fix_map             # <<<<<<<<<<<<<<
@@ -6439,7 +6645,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
  *     def split_align_tokens(self, raw_tokens, tokens):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_fixed);
   __Pyx_GIVEREF(__pyx_v_fixed);
@@ -6479,7 +6685,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_6fix_raw_
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":101
+/* "cameltokenizer/tokenizer.pyx":107
  *         return fixed, fix_map
  * 
  *     def split_align_tokens(self, raw_tokens, tokens):             # <<<<<<<<<<<<<<
@@ -6523,11 +6729,11 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_9split_al
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tokens)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("split_align_tokens", 1, 2, 2, 1); __PYX_ERR(0, 101, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("split_align_tokens", 1, 2, 2, 1); __PYX_ERR(0, 107, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "split_align_tokens") < 0)) __PYX_ERR(0, 101, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "split_align_tokens") < 0)) __PYX_ERR(0, 107, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6540,7 +6746,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_9split_al
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("split_align_tokens", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 101, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("split_align_tokens", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 107, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cameltokenizer.tokenizer.CamelTokenizer.split_align_tokens", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6575,19 +6781,19 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("split_align_tokens", 0);
 
-  /* "cameltokenizer/tokenizer.pyx":102
+  /* "cameltokenizer/tokenizer.pyx":108
  * 
  *     def split_align_tokens(self, raw_tokens, tokens):
  *         split_tokens = []             # <<<<<<<<<<<<<<
  *         for i, token in enumerate(tokens):
  *             raw_token = raw_tokens[i]
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_split_tokens = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":103
+  /* "cameltokenizer/tokenizer.pyx":109
  *     def split_align_tokens(self, raw_tokens, tokens):
  *         split_tokens = []
  *         for i, token in enumerate(tokens):             # <<<<<<<<<<<<<<
@@ -6600,26 +6806,26 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
     __pyx_t_2 = __pyx_v_tokens; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_tokens); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_tokens); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_4)) {
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 109, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 109, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       }
@@ -6629,7 +6835,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 103, __pyx_L1_error)
+          else __PYX_ERR(0, 109, __pyx_L1_error)
         }
         break;
       }
@@ -6639,32 +6845,32 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
     __pyx_t_5 = 0;
     __Pyx_INCREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
-    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1);
     __pyx_t_1 = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "cameltokenizer/tokenizer.pyx":104
+    /* "cameltokenizer/tokenizer.pyx":110
  *         split_tokens = []
  *         for i, token in enumerate(tokens):
  *             raw_token = raw_tokens[i]             # <<<<<<<<<<<<<<
  *             if not token.count('_'):
  *                 split_tokens.append([raw_token])
  */
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_raw_tokens, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_raw_tokens, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_raw_token, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "cameltokenizer/tokenizer.pyx":105
+    /* "cameltokenizer/tokenizer.pyx":111
  *         for i, token in enumerate(tokens):
  *             raw_token = raw_tokens[i]
  *             if not token.count('_'):             # <<<<<<<<<<<<<<
  *                 split_tokens.append([raw_token])
  *             else:
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_count); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -6676,32 +6882,32 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
         __Pyx_DECREF_SET(__pyx_t_6, function);
       }
     }
-    __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_n_s__13) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_n_s__13);
+    __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_n_s__18) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_n_s__18);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_9 = ((!__pyx_t_8) != 0);
     if (__pyx_t_9) {
 
-      /* "cameltokenizer/tokenizer.pyx":106
+      /* "cameltokenizer/tokenizer.pyx":112
  *             raw_token = raw_tokens[i]
  *             if not token.count('_'):
  *                 split_tokens.append([raw_token])             # <<<<<<<<<<<<<<
  *             else:
  *                 token = dediac_ar(token)
  */
-      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
+      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_v_raw_token);
       __Pyx_GIVEREF(__pyx_v_raw_token);
       PyList_SET_ITEM(__pyx_t_5, 0, __pyx_v_raw_token);
-      __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_split_tokens, __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 106, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_split_tokens, __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 112, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "cameltokenizer/tokenizer.pyx":105
+      /* "cameltokenizer/tokenizer.pyx":111
  *         for i, token in enumerate(tokens):
  *             raw_token = raw_tokens[i]
  *             if not token.count('_'):             # <<<<<<<<<<<<<<
@@ -6711,7 +6917,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
       goto __pyx_L5;
     }
 
-    /* "cameltokenizer/tokenizer.pyx":108
+    /* "cameltokenizer/tokenizer.pyx":114
  *                 split_tokens.append([raw_token])
  *             else:
  *                 token = dediac_ar(token)             # <<<<<<<<<<<<<<
@@ -6719,7 +6925,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
  *                     token = token.replace('+_', '_').replace('_+', '_')
  */
     /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_dediac_ar); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_dediac_ar); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -6733,65 +6939,65 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
       }
       __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_7, __pyx_v_token) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_token);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF_SET(__pyx_v_token, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "cameltokenizer/tokenizer.pyx":109
+      /* "cameltokenizer/tokenizer.pyx":115
  *             else:
  *                 token = dediac_ar(token)
  *                 if token.replace('+_', '').replace('_+', '') == raw_token:             # <<<<<<<<<<<<<<
  *                     token = token.replace('+_', '_').replace('_+', '_')
  *                     split_tokens.append(token.split('_'))
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_v_raw_token, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_v_raw_token, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if (__pyx_t_9) {
 
-        /* "cameltokenizer/tokenizer.pyx":110
+        /* "cameltokenizer/tokenizer.pyx":116
  *                 token = dediac_ar(token)
  *                 if token.replace('+_', '').replace('_+', '') == raw_token:
  *                     token = token.replace('+_', '_').replace('_+', '_')             # <<<<<<<<<<<<<<
  *                     split_tokens.append(token.split('_'))
  *                 else:
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF_SET(__pyx_v_token, __pyx_t_6);
         __pyx_t_6 = 0;
 
-        /* "cameltokenizer/tokenizer.pyx":111
+        /* "cameltokenizer/tokenizer.pyx":117
  *                 if token.replace('+_', '').replace('_+', '') == raw_token:
  *                     token = token.replace('+_', '_').replace('_+', '_')
  *                     split_tokens.append(token.split('_'))             # <<<<<<<<<<<<<<
  *                 else:
  *                     split_tokens.append([raw_token])
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_split); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_split); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_7 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -6803,15 +7009,15 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
             __Pyx_DECREF_SET(__pyx_t_5, function);
           }
         }
-        __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_n_s__13) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_n_s__13);
+        __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_n_s__18) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_n_s__18);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 111, __pyx_L1_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_split_tokens, __pyx_t_6); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 111, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_split_tokens, __pyx_t_6); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "cameltokenizer/tokenizer.pyx":109
+        /* "cameltokenizer/tokenizer.pyx":115
  *             else:
  *                 token = dediac_ar(token)
  *                 if token.replace('+_', '').replace('_+', '') == raw_token:             # <<<<<<<<<<<<<<
@@ -6821,7 +7027,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
         goto __pyx_L6;
       }
 
-      /* "cameltokenizer/tokenizer.pyx":113
+      /* "cameltokenizer/tokenizer.pyx":119
  *                     split_tokens.append(token.split('_'))
  *                 else:
  *                     split_tokens.append([raw_token])             # <<<<<<<<<<<<<<
@@ -6829,26 +7035,26 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
  *         return zip(raw_tokens, split_tokens)
  */
       /*else*/ {
-        __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 119, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_INCREF(__pyx_v_raw_token);
         __Pyx_GIVEREF(__pyx_v_raw_token);
         PyList_SET_ITEM(__pyx_t_6, 0, __pyx_v_raw_token);
-        __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_split_tokens, __pyx_t_6); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Append(__pyx_v_split_tokens, __pyx_t_6); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 119, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __pyx_L6:;
     }
     __pyx_L5:;
 
-    /* "cameltokenizer/tokenizer.pyx":114
+    /* "cameltokenizer/tokenizer.pyx":120
  *                 else:
  *                     split_tokens.append([raw_token])
  *             split_tokens = self.improve_morphological_tokenization(split_tokens)             # <<<<<<<<<<<<<<
  *         return zip(raw_tokens, split_tokens)
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_improve_morphological_tokenizati); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_improve_morphological_tokenizati); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -6862,13 +7068,13 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
     }
     __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_v_split_tokens) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_split_tokens);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF_SET(__pyx_v_split_tokens, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "cameltokenizer/tokenizer.pyx":103
+    /* "cameltokenizer/tokenizer.pyx":109
  *     def split_align_tokens(self, raw_tokens, tokens):
  *         split_tokens = []
  *         for i, token in enumerate(tokens):             # <<<<<<<<<<<<<<
@@ -6879,7 +7085,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":115
+  /* "cameltokenizer/tokenizer.pyx":121
  *                     split_tokens.append([raw_token])
  *             split_tokens = self.improve_morphological_tokenization(split_tokens)
  *         return zip(raw_tokens, split_tokens)             # <<<<<<<<<<<<<<
@@ -6887,7 +7093,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
  *     def improve_morphological_tokenization(self, split_tokens):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_raw_tokens);
   __Pyx_GIVEREF(__pyx_v_raw_tokens);
@@ -6895,14 +7101,14 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
   __Pyx_INCREF(__pyx_v_split_tokens);
   __Pyx_GIVEREF(__pyx_v_split_tokens);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_split_tokens);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "cameltokenizer/tokenizer.pyx":101
+  /* "cameltokenizer/tokenizer.pyx":107
  *         return fixed, fix_map
  * 
  *     def split_align_tokens(self, raw_tokens, tokens):             # <<<<<<<<<<<<<<
@@ -6929,7 +7135,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_8split_al
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":117
+/* "cameltokenizer/tokenizer.pyx":123
  *         return zip(raw_tokens, split_tokens)
  * 
  *     def improve_morphological_tokenization(self, split_tokens):             # <<<<<<<<<<<<<<
@@ -6975,19 +7181,19 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("improve_morphological_tokenization", 0);
 
-  /* "cameltokenizer/tokenizer.pyx":119
+  /* "cameltokenizer/tokenizer.pyx":125
  *     def improve_morphological_tokenization(self, split_tokens):
  *         """ fix a few cases of over-splitting; split some more prefixes and suffixes """
  *         fixed_split_tokens = []             # <<<<<<<<<<<<<<
  *         for split_token in split_tokens:
  *             n_segments = len(split_token)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_fixed_split_tokens = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":120
+  /* "cameltokenizer/tokenizer.pyx":126
  *         """ fix a few cases of over-splitting; split some more prefixes and suffixes """
  *         fixed_split_tokens = []
  *         for split_token in split_tokens:             # <<<<<<<<<<<<<<
@@ -6998,26 +7204,26 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
     __pyx_t_1 = __pyx_v_split_tokens; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_split_tokens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_split_tokens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -7027,7 +7233,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 120, __pyx_L1_error)
+          else __PYX_ERR(0, 126, __pyx_L1_error)
         }
         break;
       }
@@ -7036,29 +7242,29 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
     __Pyx_XDECREF_SET(__pyx_v_split_token, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "cameltokenizer/tokenizer.pyx":121
+    /* "cameltokenizer/tokenizer.pyx":127
  *         fixed_split_tokens = []
  *         for split_token in split_tokens:
  *             n_segments = len(split_token)             # <<<<<<<<<<<<<<
  *             segment = split_token[0]
  *             if n_segments == 2 and segment == '' and split_token[1] == '':
  */
-    __pyx_t_5 = PyObject_Length(__pyx_v_split_token); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_5 = PyObject_Length(__pyx_v_split_token); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 127, __pyx_L1_error)
     __pyx_v_n_segments = __pyx_t_5;
 
-    /* "cameltokenizer/tokenizer.pyx":122
+    /* "cameltokenizer/tokenizer.pyx":128
  *         for split_token in split_tokens:
  *             n_segments = len(split_token)
  *             segment = split_token[0]             # <<<<<<<<<<<<<<
  *             if n_segments == 2 and segment == '' and split_token[1] == '':
  *                 split_token = ['']
  */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_split_token, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_split_token, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_segment, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "cameltokenizer/tokenizer.pyx":123
+    /* "cameltokenizer/tokenizer.pyx":129
  *             n_segments = len(split_token)
  *             segment = split_token[0]
  *             if n_segments == 2 and segment == '' and split_token[1] == '':             # <<<<<<<<<<<<<<
@@ -7071,36 +7277,36 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
       __pyx_t_6 = __pyx_t_7;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_v_segment, __pyx_kp_s__20, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_v_segment, __pyx_kp_s__25, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 129, __pyx_L1_error)
     if (__pyx_t_7) {
     } else {
       __pyx_t_6 = __pyx_t_7;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_split_token, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_split_token, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_kp_s__21, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_7 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_kp_s__26, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_6 = __pyx_t_7;
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_6) {
 
-      /* "cameltokenizer/tokenizer.pyx":124
+      /* "cameltokenizer/tokenizer.pyx":130
  *             segment = split_token[0]
  *             if n_segments == 2 and segment == '' and split_token[1] == '':
  *                 split_token = ['']             # <<<<<<<<<<<<<<
  *             elif n_segments == 1:
  *                 if segment.startswith(''):
  */
-      __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
+      __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_INCREF(__pyx_kp_s__22);
-      __Pyx_GIVEREF(__pyx_kp_s__22);
-      PyList_SET_ITEM(__pyx_t_4, 0, __pyx_kp_s__22);
+      __Pyx_INCREF(__pyx_kp_s__27);
+      __Pyx_GIVEREF(__pyx_kp_s__27);
+      PyList_SET_ITEM(__pyx_t_4, 0, __pyx_kp_s__27);
       __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "cameltokenizer/tokenizer.pyx":123
+      /* "cameltokenizer/tokenizer.pyx":129
  *             n_segments = len(split_token)
  *             segment = split_token[0]
  *             if n_segments == 2 and segment == '' and split_token[1] == '':             # <<<<<<<<<<<<<<
@@ -7110,7 +7316,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
       goto __pyx_L5;
     }
 
-    /* "cameltokenizer/tokenizer.pyx":125
+    /* "cameltokenizer/tokenizer.pyx":131
  *             if n_segments == 2 and segment == '' and split_token[1] == '':
  *                 split_token = ['']
  *             elif n_segments == 1:             # <<<<<<<<<<<<<<
@@ -7120,14 +7326,14 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
     __pyx_t_6 = ((__pyx_v_n_segments == 1) != 0);
     if (__pyx_t_6) {
 
-      /* "cameltokenizer/tokenizer.pyx":126
+      /* "cameltokenizer/tokenizer.pyx":132
  *                 split_token = ['']
  *             elif n_segments == 1:
  *                 if segment.startswith(''):             # <<<<<<<<<<<<<<
  *                     split_token = ['', segment[1:]]
  *                 elif segment.count('') == 1:
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_startswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 126, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_startswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_9 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -7139,36 +7345,36 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
           __Pyx_DECREF_SET(__pyx_t_8, function);
         }
       }
-      __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_kp_s__23) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__23);
+      __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_kp_s__28) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__28);
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
 
-        /* "cameltokenizer/tokenizer.pyx":127
+        /* "cameltokenizer/tokenizer.pyx":133
  *             elif n_segments == 1:
  *                 if segment.startswith(''):
  *                     split_token = ['', segment[1:]]             # <<<<<<<<<<<<<<
  *                 elif segment.count('') == 1:
  *                     parts = segment.split('')
  */
-        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 1, 0, NULL, NULL, &__pyx_slice__25, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 1, 0, NULL, NULL, &__pyx_slice__15, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 133, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_INCREF(__pyx_kp_s__24);
-        __Pyx_GIVEREF(__pyx_kp_s__24);
-        PyList_SET_ITEM(__pyx_t_8, 0, __pyx_kp_s__24);
+        __Pyx_INCREF(__pyx_kp_s__17);
+        __Pyx_GIVEREF(__pyx_kp_s__17);
+        PyList_SET_ITEM(__pyx_t_8, 0, __pyx_kp_s__17);
         __Pyx_GIVEREF(__pyx_t_4);
         PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_4);
         __pyx_t_4 = 0;
         __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "cameltokenizer/tokenizer.pyx":126
+        /* "cameltokenizer/tokenizer.pyx":132
  *                 split_token = ['']
  *             elif n_segments == 1:
  *                 if segment.startswith(''):             # <<<<<<<<<<<<<<
@@ -7178,14 +7384,14 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
         goto __pyx_L9;
       }
 
-      /* "cameltokenizer/tokenizer.pyx":128
+      /* "cameltokenizer/tokenizer.pyx":134
  *                 if segment.startswith(''):
  *                     split_token = ['', segment[1:]]
  *                 elif segment.count('') == 1:             # <<<<<<<<<<<<<<
  *                     parts = segment.split('')
  *                     if parts[0].isalpha() and parts[1].isalpha():
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_9 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -7197,26 +7403,26 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
           __Pyx_DECREF_SET(__pyx_t_4, function);
         }
       }
-      __pyx_t_8 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_9, __pyx_kp_s__26) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s__26);
+      __pyx_t_8 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_9, __pyx_kp_s__29) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_s__29);
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 128, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_8, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_8, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
 
-        /* "cameltokenizer/tokenizer.pyx":129
+        /* "cameltokenizer/tokenizer.pyx":135
  *                     split_token = ['', segment[1:]]
  *                 elif segment.count('') == 1:
  *                     parts = segment.split('')             # <<<<<<<<<<<<<<
  *                     if parts[0].isalpha() and parts[1].isalpha():
  *                         split_token = [parts[0], '', parts[1]]
  */
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_split); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 129, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_split); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 135, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __pyx_t_9 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -7228,24 +7434,24 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
             __Pyx_DECREF_SET(__pyx_t_8, function);
           }
         }
-        __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_kp_s__26) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__26);
+        __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_9, __pyx_kp_s__29) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__29);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_XDECREF_SET(__pyx_v_parts, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "cameltokenizer/tokenizer.pyx":130
+        /* "cameltokenizer/tokenizer.pyx":136
  *                 elif segment.count('') == 1:
  *                     parts = segment.split('')
  *                     if parts[0].isalpha() and parts[1].isalpha():             # <<<<<<<<<<<<<<
  *                         split_token = [parts[0], '', parts[1]]
  *                 elif segment.endswith('') or segment.endswith(''):
  */
-        __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 130, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_isalpha); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_isalpha); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_8 = NULL;
@@ -7260,19 +7466,19 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
         }
         __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         if (__pyx_t_7) {
         } else {
           __pyx_t_6 = __pyx_t_7;
           goto __pyx_L11_bool_binop_done;
         }
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_parts, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_parts, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_isalpha); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 130, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_isalpha); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_9 = NULL;
@@ -7287,33 +7493,33 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
         }
         __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_6 = __pyx_t_7;
         __pyx_L11_bool_binop_done:;
         if (__pyx_t_6) {
 
-          /* "cameltokenizer/tokenizer.pyx":131
+          /* "cameltokenizer/tokenizer.pyx":137
  *                     parts = segment.split('')
  *                     if parts[0].isalpha() and parts[1].isalpha():
  *                         split_token = [parts[0], '', parts[1]]             # <<<<<<<<<<<<<<
  *                 elif segment.endswith('') or segment.endswith(''):
  *                     split_token = [segment[:-1], '']
  */
-          __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_parts, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 131, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_parts, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 137, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_9 = PyList_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 131, __pyx_L1_error)
+          __pyx_t_9 = PyList_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 137, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_4);
           PyList_SET_ITEM(__pyx_t_9, 0, __pyx_t_4);
-          __Pyx_INCREF(__pyx_kp_s__26);
-          __Pyx_GIVEREF(__pyx_kp_s__26);
-          PyList_SET_ITEM(__pyx_t_9, 1, __pyx_kp_s__26);
+          __Pyx_INCREF(__pyx_kp_s__29);
+          __Pyx_GIVEREF(__pyx_kp_s__29);
+          PyList_SET_ITEM(__pyx_t_9, 1, __pyx_kp_s__29);
           __Pyx_GIVEREF(__pyx_t_8);
           PyList_SET_ITEM(__pyx_t_9, 2, __pyx_t_8);
           __pyx_t_4 = 0;
@@ -7321,7 +7527,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
           __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "cameltokenizer/tokenizer.pyx":130
+          /* "cameltokenizer/tokenizer.pyx":136
  *                 elif segment.count('') == 1:
  *                     parts = segment.split('')
  *                     if parts[0].isalpha() and parts[1].isalpha():             # <<<<<<<<<<<<<<
@@ -7330,7 +7536,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
  */
         }
 
-        /* "cameltokenizer/tokenizer.pyx":128
+        /* "cameltokenizer/tokenizer.pyx":134
  *                 if segment.startswith(''):
  *                     split_token = ['', segment[1:]]
  *                 elif segment.count('') == 1:             # <<<<<<<<<<<<<<
@@ -7340,14 +7546,14 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
         goto __pyx_L9;
       }
 
-      /* "cameltokenizer/tokenizer.pyx":132
+      /* "cameltokenizer/tokenizer.pyx":138
  *                     if parts[0].isalpha() and parts[1].isalpha():
  *                         split_token = [parts[0], '', parts[1]]
  *                 elif segment.endswith('') or segment.endswith(''):             # <<<<<<<<<<<<<<
  *                     split_token = [segment[:-1], '']
- *                 elif segment.endswith('') or segment.endswith(''):
+ *                 elif segment.endswith('zzz'):
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -7359,19 +7565,19 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
           __Pyx_DECREF_SET(__pyx_t_8, function);
         }
       }
-      __pyx_t_9 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_4, __pyx_kp_s__27) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__27);
+      __pyx_t_9 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_4, __pyx_kp_s__30) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__30);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 132, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       if (!__pyx_t_7) {
       } else {
         __pyx_t_6 = __pyx_t_7;
         goto __pyx_L13_bool_binop_done;
       }
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -7383,55 +7589,55 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
           __Pyx_DECREF_SET(__pyx_t_8, function);
         }
       }
-      __pyx_t_9 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_4, __pyx_kp_s__28) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__28);
+      __pyx_t_9 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_4, __pyx_kp_s__31) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_kp_s__31);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 132, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_6 = __pyx_t_7;
       __pyx_L13_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "cameltokenizer/tokenizer.pyx":133
+        /* "cameltokenizer/tokenizer.pyx":139
  *                         split_token = [parts[0], '', parts[1]]
  *                 elif segment.endswith('') or segment.endswith(''):
  *                     split_token = [segment[:-1], '']             # <<<<<<<<<<<<<<
- *                 elif segment.endswith('') or segment.endswith(''):
- *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith('zzz'):
+ *                     split_token = [segment[:-1], segment[-1:]]
  */
-        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 139, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 133, __pyx_L1_error)
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 139, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_9);
         PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_9);
-        __Pyx_INCREF(__pyx_kp_s__29);
-        __Pyx_GIVEREF(__pyx_kp_s__29);
-        PyList_SET_ITEM(__pyx_t_8, 1, __pyx_kp_s__29);
+        __Pyx_INCREF(__pyx_kp_s__32);
+        __Pyx_GIVEREF(__pyx_kp_s__32);
+        PyList_SET_ITEM(__pyx_t_8, 1, __pyx_kp_s__32);
         __pyx_t_9 = 0;
         __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "cameltokenizer/tokenizer.pyx":132
+        /* "cameltokenizer/tokenizer.pyx":138
  *                     if parts[0].isalpha() and parts[1].isalpha():
  *                         split_token = [parts[0], '', parts[1]]
  *                 elif segment.endswith('') or segment.endswith(''):             # <<<<<<<<<<<<<<
  *                     split_token = [segment[:-1], '']
- *                 elif segment.endswith('') or segment.endswith(''):
+ *                 elif segment.endswith('zzz'):
  */
         goto __pyx_L9;
       }
 
-      /* "cameltokenizer/tokenizer.pyx":134
+      /* "cameltokenizer/tokenizer.pyx":140
  *                 elif segment.endswith('') or segment.endswith(''):
  *                     split_token = [segment[:-1], '']
- *                 elif segment.endswith('') or segment.endswith(''):             # <<<<<<<<<<<<<<
- *                     split_token = [segment[:-2], segment[-2:]]
- *                 elif segment.endswith(''):
+ *                 elif segment.endswith('zzz'):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
  */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -7443,53 +7649,27 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
           __Pyx_DECREF_SET(__pyx_t_9, function);
         }
       }
-      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_kp_s__30) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__30);
+      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_n_s_zzz) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_n_s_zzz);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 134, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (!__pyx_t_7) {
-      } else {
-        __pyx_t_6 = __pyx_t_7;
-        goto __pyx_L15_bool_binop_done;
-      }
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 134, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_4 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
-        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_9);
-        if (likely(__pyx_t_4)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-          __Pyx_INCREF(__pyx_t_4);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_9, function);
-        }
-      }
-      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_kp_s__31) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__31);
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 134, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_8);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 134, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_6 = __pyx_t_7;
-      __pyx_L15_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "cameltokenizer/tokenizer.pyx":135
+        /* "cameltokenizer/tokenizer.pyx":141
  *                     split_token = [segment[:-1], '']
- *                 elif segment.endswith('') or segment.endswith(''):
- *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
- *                 elif segment.endswith(''):
- *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith('zzz'):
+ *                     split_token = [segment[:-1], segment[-1:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
  */
-        __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__32, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 135, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__33, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 135, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -1L, 0, NULL, NULL, &__pyx_slice__33, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
+        __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_GIVEREF(__pyx_t_8);
         PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
@@ -7500,24 +7680,24 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
         __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "cameltokenizer/tokenizer.pyx":134
+        /* "cameltokenizer/tokenizer.pyx":140
  *                 elif segment.endswith('') or segment.endswith(''):
  *                     split_token = [segment[:-1], '']
- *                 elif segment.endswith('') or segment.endswith(''):             # <<<<<<<<<<<<<<
- *                     split_token = [segment[:-2], segment[-2:]]
- *                 elif segment.endswith(''):
+ *                 elif segment.endswith('zzz'):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
  */
         goto __pyx_L9;
       }
 
-      /* "cameltokenizer/tokenizer.pyx":136
- *                 elif segment.endswith('') or segment.endswith(''):
+      /* "cameltokenizer/tokenizer.pyx":142
+ *                 elif segment.endswith('zzz'):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):             # <<<<<<<<<<<<<<
  *                     split_token = [segment[:-2], segment[-2:]]
- *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
- *                     split_token = [segment[:-3], segment[-3:]]
- *             fixed_split_tokens.append(split_token)
+ *                 elif segment.endswith(''):
  */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_8 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -7531,25 +7711,75 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
       }
       __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__34) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__34);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 136, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (!__pyx_t_7) {
+      } else {
+        __pyx_t_6 = __pyx_t_7;
+        goto __pyx_L15_bool_binop_done;
+      }
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__35) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__35);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (!__pyx_t_7) {
+      } else {
+        __pyx_t_6 = __pyx_t_7;
+        goto __pyx_L15_bool_binop_done;
+      }
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__36) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__36);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_6 = __pyx_t_7;
+      __pyx_L15_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "cameltokenizer/tokenizer.pyx":137
- *                     split_token = [segment[:-2], segment[-2:]]
+        /* "cameltokenizer/tokenizer.pyx":143
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
  *                 elif segment.endswith(''):
- *                     split_token = [segment[:-3], segment[-3:]]             # <<<<<<<<<<<<<<
- *             fixed_split_tokens.append(split_token)
- *         return fixed_split_tokens
+ *                     split_token = [segment[:-2], segment[-2:]]
  */
-        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -3L, NULL, NULL, &__pyx_slice__35, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__37, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -3L, 0, NULL, NULL, &__pyx_slice__36, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__38, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 143, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_4);
         PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_4);
@@ -7560,17 +7790,617 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
         __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "cameltokenizer/tokenizer.pyx":136
- *                 elif segment.endswith('') or segment.endswith(''):
+        /* "cameltokenizer/tokenizer.pyx":142
+ *                 elif segment.endswith('zzz'):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":144
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
  *                     split_token = [segment[:-2], segment[-2:]]
  *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_kp_s__39) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__39);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":145
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ */
+        __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__37, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__38, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_4, 1, __pyx_t_9);
+        __pyx_t_8 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_4);
+        __pyx_t_4 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":144
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":146
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 146, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__40) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__40);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":147
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ */
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__37, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__38, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 147, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 147, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_9);
+        __pyx_t_4 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
+        __pyx_t_8 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":146
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":148
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 148, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_kp_s__41) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__41);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 148, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":149
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ */
+        __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__37, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 149, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__38, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 149, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_4, 1, __pyx_t_9);
+        __pyx_t_8 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_4);
+        __pyx_t_4 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":148
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":150
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 150, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__42) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__42);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":151
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ */
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__37, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__38, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 151, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 151, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_9);
+        __pyx_t_4 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
+        __pyx_t_8 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":150
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":152
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_kp_s__43) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__43);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":153
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ */
+        __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -1L, 0, NULL, NULL, &__pyx_slice__33, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_4, 1, __pyx_t_9);
+        __pyx_t_8 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_4);
+        __pyx_t_4 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":152
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":154
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__44) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__44);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":155
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
  *                     split_token = [segment[:-3], segment[-3:]]
+ */
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -1L, NULL, NULL, &__pyx_slice__12, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -1L, 0, NULL, NULL, &__pyx_slice__33, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_9);
+        __pyx_t_4 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
+        __pyx_t_8 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":154
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":156
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_kp_s__45) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__45);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":157
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]
+ */
+        __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -3L, NULL, NULL, &__pyx_slice__46, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 157, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -3L, 0, NULL, NULL, &__pyx_slice__47, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 157, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_4, 1, __pyx_t_9);
+        __pyx_t_8 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_4);
+        __pyx_t_4 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":156
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":158
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__48) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__48);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":159
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ */
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -3L, NULL, NULL, &__pyx_slice__46, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -3L, 0, NULL, NULL, &__pyx_slice__47, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 159, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 159, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_9);
+        __pyx_t_4 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
+        __pyx_t_8 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":158
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":160
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_8 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_4, __pyx_kp_s__49) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__49);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":161
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ */
+        __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__37, 0, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__38, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_4, 1, __pyx_t_9);
+        __pyx_t_8 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_4);
+        __pyx_t_4 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":160
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ */
+        goto __pyx_L9;
+      }
+
+      /* "cameltokenizer/tokenizer.pyx":162
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *             fixed_split_tokens.append(split_token)
+ */
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_segment, __pyx_n_s_endswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+        }
+      }
+      __pyx_t_4 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_kp_s__50) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_kp_s__50);
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (__pyx_t_6) {
+
+        /* "cameltokenizer/tokenizer.pyx":163
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
+ *             fixed_split_tokens.append(split_token)
+ *         return fixed_split_tokens
+ */
+        __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_segment, 0, -2L, NULL, NULL, &__pyx_slice__37, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_segment, -2L, 0, NULL, NULL, &__pyx_slice__38, 1, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_8 = PyList_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyList_SET_ITEM(__pyx_t_8, 0, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_9);
+        PyList_SET_ITEM(__pyx_t_8, 1, __pyx_t_9);
+        __pyx_t_4 = 0;
+        __pyx_t_9 = 0;
+        __Pyx_DECREF_SET(__pyx_v_split_token, __pyx_t_8);
+        __pyx_t_8 = 0;
+
+        /* "cameltokenizer/tokenizer.pyx":162
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
+ *                 elif segment.endswith(''):             # <<<<<<<<<<<<<<
+ *                     split_token = [segment[:-2], segment[-2:]]
  *             fixed_split_tokens.append(split_token)
  */
       }
       __pyx_L9:;
 
-      /* "cameltokenizer/tokenizer.pyx":125
+      /* "cameltokenizer/tokenizer.pyx":131
  *             if n_segments == 2 and segment == '' and split_token[1] == '':
  *                 split_token = ['']
  *             elif n_segments == 1:             # <<<<<<<<<<<<<<
@@ -7580,16 +8410,16 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
     }
     __pyx_L5:;
 
-    /* "cameltokenizer/tokenizer.pyx":138
+    /* "cameltokenizer/tokenizer.pyx":164
  *                 elif segment.endswith(''):
- *                     split_token = [segment[:-3], segment[-3:]]
+ *                     split_token = [segment[:-2], segment[-2:]]
  *             fixed_split_tokens.append(split_token)             # <<<<<<<<<<<<<<
  *         return fixed_split_tokens
  * 
  */
-    __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_fixed_split_tokens, __pyx_v_split_token); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_fixed_split_tokens, __pyx_v_split_token); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 164, __pyx_L1_error)
 
-    /* "cameltokenizer/tokenizer.pyx":120
+    /* "cameltokenizer/tokenizer.pyx":126
  *         """ fix a few cases of over-splitting; split some more prefixes and suffixes """
  *         fixed_split_tokens = []
  *         for split_token in split_tokens:             # <<<<<<<<<<<<<<
@@ -7599,8 +8429,8 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":139
- *                     split_token = [segment[:-3], segment[-3:]]
+  /* "cameltokenizer/tokenizer.pyx":165
+ *                     split_token = [segment[:-2], segment[-2:]]
  *             fixed_split_tokens.append(split_token)
  *         return fixed_split_tokens             # <<<<<<<<<<<<<<
  * 
@@ -7611,7 +8441,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
   __pyx_r = __pyx_v_fixed_split_tokens;
   goto __pyx_L0;
 
-  /* "cameltokenizer/tokenizer.pyx":117
+  /* "cameltokenizer/tokenizer.pyx":123
  *         return zip(raw_tokens, split_tokens)
  * 
  *     def improve_morphological_tokenization(self, split_tokens):             # <<<<<<<<<<<<<<
@@ -7637,7 +8467,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_10improve
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":141
+/* "cameltokenizer/tokenizer.pyx":167
  *         return fixed_split_tokens
  * 
  *     def score(self, examples, **kwargs):             # <<<<<<<<<<<<<<
@@ -7679,7 +8509,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_13score(P
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "score") < 0)) __PYX_ERR(0, 141, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "score") < 0)) __PYX_ERR(0, 167, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -7690,7 +8520,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_13score(P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("score", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 141, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("score", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 167, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
   __Pyx_AddTraceback("cameltokenizer.tokenizer.CamelTokenizer.score", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -7718,14 +8548,14 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_12score(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("score", 0);
 
-  /* "cameltokenizer/tokenizer.pyx":142
+  /* "cameltokenizer/tokenizer.pyx":168
  * 
  *     def score(self, examples, **kwargs):
  *         validate_examples(examples, "Tokenizer.score")             # <<<<<<<<<<<<<<
  *         return Scorer.score_tokenization(examples)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_validate_examples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_validate_examples); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -7742,7 +8572,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_12score(C
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_examples, __pyx_kp_s_Tokenizer_score};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -7750,13 +8580,13 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_12score(C
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_examples, __pyx_kp_s_Tokenizer_score};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -7767,14 +8597,14 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_12score(C
     __Pyx_INCREF(__pyx_kp_s_Tokenizer_score);
     __Pyx_GIVEREF(__pyx_kp_s_Tokenizer_score);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_kp_s_Tokenizer_score);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":143
+  /* "cameltokenizer/tokenizer.pyx":169
  *     def score(self, examples, **kwargs):
  *         validate_examples(examples, "Tokenizer.score")
  *         return Scorer.score_tokenization(examples)             # <<<<<<<<<<<<<<
@@ -7782,9 +8612,9 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_12score(C
  *     def pipe(self, texts, batch_size=1000):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Scorer); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Scorer); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_score_tokenization); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_score_tokenization); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -7799,14 +8629,14 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_12score(C
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_2, __pyx_v_examples) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_examples);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cameltokenizer/tokenizer.pyx":141
+  /* "cameltokenizer/tokenizer.pyx":167
  *         return fixed_split_tokens
  * 
  *     def score(self, examples, **kwargs):             # <<<<<<<<<<<<<<
@@ -7829,7 +8659,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_12score(C
 }
 static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "cameltokenizer/tokenizer.pyx":145
+/* "cameltokenizer/tokenizer.pyx":171
  *         return Scorer.score_tokenization(examples)
  * 
  *     def pipe(self, texts, batch_size=1000):             # <<<<<<<<<<<<<<
@@ -7878,7 +8708,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_15pipe(Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pipe") < 0)) __PYX_ERR(0, 145, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pipe") < 0)) __PYX_ERR(0, 171, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7894,7 +8724,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_15pipe(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pipe", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 145, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pipe", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 171, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cameltokenizer.tokenizer.CamelTokenizer.pipe", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7919,7 +8749,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_14pipe(st
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 145, __pyx_L1_error)
+    __PYX_ERR(0, 171, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -7933,7 +8763,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_14pipe(st
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_batch_size);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_batch_size);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generator, __pyx_codeobj__37, (PyObject *) __pyx_cur_scope, __pyx_n_s_pipe, __pyx_n_s_CamelTokenizer_pipe, __pyx_n_s_cameltokenizer_tokenizer); if (unlikely(!gen)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generator, __pyx_codeobj__51, (PyObject *) __pyx_cur_scope, __pyx_n_s_pipe, __pyx_n_s_CamelTokenizer_pipe, __pyx_n_s_cameltokenizer_tokenizer); if (unlikely(!gen)) __PYX_ERR(0, 171, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -7972,9 +8802,9 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 145, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 171, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":155
+  /* "cameltokenizer/tokenizer.pyx":181
  *         DOCS: https://spacy.io/api/tokenizer#pipe
  *         """
  *         for text in texts:             # <<<<<<<<<<<<<<
@@ -7985,26 +8815,26 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
     __pyx_t_1 = __pyx_cur_scope->__pyx_v_texts; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_texts); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_texts); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -8014,7 +8844,7 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 155, __pyx_L1_error)
+          else __PYX_ERR(0, 181, __pyx_L1_error)
         }
         break;
       }
@@ -8025,7 +8855,7 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "cameltokenizer/tokenizer.pyx":156
+    /* "cameltokenizer/tokenizer.pyx":182
  *         """
  *         for text in texts:
  *             yield self(text)             # <<<<<<<<<<<<<<
@@ -8045,7 +8875,7 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
     }
     __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_cur_scope->__pyx_v_text) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_cur_scope->__pyx_v_text);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_r = __pyx_t_4;
@@ -8066,9 +8896,9 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
     __Pyx_XGOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 156, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 182, __pyx_L1_error)
 
-    /* "cameltokenizer/tokenizer.pyx":155
+    /* "cameltokenizer/tokenizer.pyx":181
  *         DOCS: https://spacy.io/api/tokenizer#pipe
  *         """
  *         for text in texts:             # <<<<<<<<<<<<<<
@@ -8079,7 +8909,7 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "cameltokenizer/tokenizer.pyx":145
+  /* "cameltokenizer/tokenizer.pyx":171
  *         return Scorer.score_tokenization(examples)
  * 
  *     def pipe(self, texts, batch_size=1000):             # <<<<<<<<<<<<<<
@@ -8107,7 +8937,7 @@ static PyObject *__pyx_gb_14cameltokenizer_9tokenizer_14CamelTokenizer_16generat
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":158
+/* "cameltokenizer/tokenizer.pyx":184
  *             yield self(text)
  * 
  *     def to_disk(self, path, **kwargs):             # <<<<<<<<<<<<<<
@@ -8149,7 +8979,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_18to_disk
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "to_disk") < 0)) __PYX_ERR(0, 158, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "to_disk") < 0)) __PYX_ERR(0, 184, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -8160,7 +8990,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_18to_disk
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("to_disk", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 158, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("to_disk", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 184, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
   __Pyx_AddTraceback("cameltokenizer.tokenizer.CamelTokenizer.to_disk", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -8197,16 +9027,16 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
   __Pyx_RefNannySetupContext("to_disk", 0);
   __Pyx_INCREF(__pyx_v_path);
 
-  /* "cameltokenizer/tokenizer.pyx":167
+  /* "cameltokenizer/tokenizer.pyx":193
  *         DOCS: https://spacy.io/api/tokenizer#to_disk
  *         """
  *         path = util.ensure_path(path)             # <<<<<<<<<<<<<<
  *         with path.open("wb") as file_:
  *             file_.write(self.to_bytes(**kwargs))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_util); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_util); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ensure_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ensure_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -8221,13 +9051,13 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_path) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_path);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_path, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":168
+  /* "cameltokenizer/tokenizer.pyx":194
  *         """
  *         path = util.ensure_path(path)
  *         with path.open("wb") as file_:             # <<<<<<<<<<<<<<
@@ -8235,7 +9065,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
  * 
  */
   /*with:*/ {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_path, __pyx_n_s_open); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_path, __pyx_n_s_open); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -8249,12 +9079,12 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
     }
     __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_s_wb) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_s_wb);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L3_error)
+    __pyx_t_2 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L3_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -8268,7 +9098,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
     }
     __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L3_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L3_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __pyx_t_3;
@@ -8286,20 +9116,20 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
           __pyx_v_file_ = __pyx_t_2;
           __pyx_t_2 = 0;
 
-          /* "cameltokenizer/tokenizer.pyx":169
+          /* "cameltokenizer/tokenizer.pyx":195
  *         path = util.ensure_path(path)
  *         with path.open("wb") as file_:
  *             file_.write(self.to_bytes(**kwargs))             # <<<<<<<<<<<<<<
  * 
  *     def to_bytes(self, *, exclude=tuple()):
  */
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_file_, __pyx_n_s_write); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L7_error)
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_file_, __pyx_n_s_write); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_to_bytes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L7_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_to_bytes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_5 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L7_error)
+          __pyx_t_5 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 169, __pyx_L7_error)
+          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 195, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -8316,12 +9146,12 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
           __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_5, __pyx_t_9) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_9);
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L7_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L7_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "cameltokenizer/tokenizer.pyx":168
+          /* "cameltokenizer/tokenizer.pyx":194
  *         """
  *         path = util.ensure_path(path)
  *         with path.open("wb") as file_:             # <<<<<<<<<<<<<<
@@ -8341,20 +9171,20 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("cameltokenizer.tokenizer.CamelTokenizer.to_disk", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_1, &__pyx_t_9) < 0) __PYX_ERR(0, 168, __pyx_L9_except_error)
+          if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_1, &__pyx_t_9) < 0) __PYX_ERR(0, 194, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_2, __pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L9_except_error)
+          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_2, __pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L9_except_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 194, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (__pyx_t_11 < 0) __PYX_ERR(0, 168, __pyx_L9_except_error)
+          if (__pyx_t_11 < 0) __PYX_ERR(0, 194, __pyx_L9_except_error)
           __pyx_t_12 = ((!(__pyx_t_11 != 0)) != 0);
           if (__pyx_t_12) {
             __Pyx_GIVEREF(__pyx_t_2);
@@ -8362,7 +9192,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
             __Pyx_XGIVEREF(__pyx_t_9);
             __Pyx_ErrRestoreWithState(__pyx_t_2, __pyx_t_1, __pyx_t_9);
             __pyx_t_2 = 0; __pyx_t_1 = 0; __pyx_t_9 = 0; 
-            __PYX_ERR(0, 168, __pyx_L9_except_error)
+            __PYX_ERR(0, 194, __pyx_L9_except_error)
           }
           __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8386,9 +9216,9 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
     /*finally:*/ {
       /*normal exit:*/{
         if (__pyx_t_4) {
-          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__38, NULL);
+          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__52, NULL);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 168, __pyx_L1_error)
+          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 194, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -8403,7 +9233,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
     __pyx_L16:;
   }
 
-  /* "cameltokenizer/tokenizer.pyx":158
+  /* "cameltokenizer/tokenizer.pyx":184
  *             yield self(text)
  * 
  *     def to_disk(self, path, **kwargs):             # <<<<<<<<<<<<<<
@@ -8430,7 +9260,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_17to_disk
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":171
+/* "cameltokenizer/tokenizer.pyx":197
  *             file_.write(self.to_bytes(**kwargs))
  * 
  *     def to_bytes(self, *, exclude=tuple()):             # <<<<<<<<<<<<<<
@@ -8453,7 +9283,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_20to_byte
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_exclude,0};
     PyObject* values[1] = {0};
-    values[0] = __pyx_k__39;
+    values[0] = __pyx_k__53;
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -8468,7 +9298,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_20to_byte
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "to_bytes") < 0)) __PYX_ERR(0, 171, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "to_bytes") < 0)) __PYX_ERR(0, 197, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
@@ -8478,7 +9308,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_20to_byte
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("to_bytes", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 171, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("to_bytes", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 197, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cameltokenizer.tokenizer.CamelTokenizer.to_bytes", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8491,7 +9321,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_14CamelTokenizer_20to_byte
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":180
+/* "cameltokenizer/tokenizer.pyx":206
  *         """
  *         serializers = {
  *             "vocab": lambda: self.vocab.to_bytes(exclude=exclude),             # <<<<<<<<<<<<<<
@@ -8528,14 +9358,14 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self) {
   __pyx_outer_scope = (struct __pyx_obj_14cameltokenizer_9tokenizer___pyx_scope_struct_1_to_bytes *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 180, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_self->vocab), __pyx_n_s_to_bytes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 206, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_self->vocab), __pyx_n_s_to_bytes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_exclude)) { __Pyx_RaiseClosureNameError("exclude"); __PYX_ERR(0, 180, __pyx_L1_error) }
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_exclude, __pyx_cur_scope->__pyx_v_exclude) < 0) __PYX_ERR(0, 180, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_exclude)) { __Pyx_RaiseClosureNameError("exclude"); __PYX_ERR(0, 206, __pyx_L1_error) }
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_exclude, __pyx_cur_scope->__pyx_v_exclude) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8556,7 +9386,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self) {
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":171
+/* "cameltokenizer/tokenizer.pyx":197
  *             file_.write(self.to_bytes(**kwargs))
  * 
  *     def to_bytes(self, *, exclude=tuple()):             # <<<<<<<<<<<<<<
@@ -8582,7 +9412,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_19to_byte
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_14cameltokenizer_9tokenizer___pyx_scope_struct_1_to_bytes *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 171, __pyx_L1_error)
+    __PYX_ERR(0, 197, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -8593,23 +9423,23 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_19to_byte
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_exclude);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_exclude);
 
-  /* "cameltokenizer/tokenizer.pyx":180
+  /* "cameltokenizer/tokenizer.pyx":206
  *         """
  *         serializers = {
  *             "vocab": lambda: self.vocab.to_bytes(exclude=exclude),             # <<<<<<<<<<<<<<
  *         }
  *         return util.to_bytes(serializers, exclude)
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_8to_bytes_lambda, 0, __pyx_n_s_to_bytes_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_8to_bytes_lambda, 0, __pyx_n_s_to_bytes_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_vocab, __pyx_t_2) < 0) __PYX_ERR(0, 180, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_vocab, __pyx_t_2) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_serializers = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":182
+  /* "cameltokenizer/tokenizer.pyx":208
  *             "vocab": lambda: self.vocab.to_bytes(exclude=exclude),
  *         }
  *         return util.to_bytes(serializers, exclude)             # <<<<<<<<<<<<<<
@@ -8617,9 +9447,9 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_19to_byte
  * @spacy.registry.tokenizers("cameltokenizer")
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_util); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_util); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_bytes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_bytes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -8637,7 +9467,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_19to_byte
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_serializers, __pyx_cur_scope->__pyx_v_exclude};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -8645,13 +9475,13 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_19to_byte
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_serializers, __pyx_cur_scope->__pyx_v_exclude};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -8662,7 +9492,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_19to_byte
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_exclude);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_exclude);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_cur_scope->__pyx_v_exclude);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -8671,7 +9501,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_19to_byte
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cameltokenizer/tokenizer.pyx":171
+  /* "cameltokenizer/tokenizer.pyx":197
  *             file_.write(self.to_bytes(**kwargs))
  * 
  *     def to_bytes(self, *, exclude=tuple()):             # <<<<<<<<<<<<<<
@@ -9068,7 +9898,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_14CamelTokenizer_23__setst
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":185
+/* "cameltokenizer/tokenizer.pyx":211
  * 
  * @spacy.registry.tokenizers("cameltokenizer")
  * def define_cameltokenizer():             # <<<<<<<<<<<<<<
@@ -9091,7 +9921,7 @@ static PyObject *__pyx_pw_14cameltokenizer_9tokenizer_1define_cameltokenizer(PyO
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":187
+/* "cameltokenizer/tokenizer.pyx":213
  * def define_cameltokenizer():
  * 
  *     def create_cameltokenizer(nlp):             # <<<<<<<<<<<<<<
@@ -9122,7 +9952,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_21define_cameltokenizer_cr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("create_cameltokenizer", 0);
 
-  /* "cameltokenizer/tokenizer.pyx":188
+  /* "cameltokenizer/tokenizer.pyx":214
  * 
  *     def create_cameltokenizer(nlp):
  *         return CamelTokenizer(nlp)             # <<<<<<<<<<<<<<
@@ -9130,13 +9960,13 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_21define_cameltokenizer_cr
  *     return create_cameltokenizer
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer), __pyx_v_nlp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer), __pyx_v_nlp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cameltokenizer/tokenizer.pyx":187
+  /* "cameltokenizer/tokenizer.pyx":213
  * def define_cameltokenizer():
  * 
  *     def create_cameltokenizer(nlp):             # <<<<<<<<<<<<<<
@@ -9155,7 +9985,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_21define_cameltokenizer_cr
   return __pyx_r;
 }
 
-/* "cameltokenizer/tokenizer.pyx":185
+/* "cameltokenizer/tokenizer.pyx":211
  * 
  * @spacy.registry.tokenizers("cameltokenizer")
  * def define_cameltokenizer():             # <<<<<<<<<<<<<<
@@ -9173,19 +10003,19 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_define_cameltokenizer(CYTH
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("define_cameltokenizer", 0);
 
-  /* "cameltokenizer/tokenizer.pyx":187
+  /* "cameltokenizer/tokenizer.pyx":213
  * def define_cameltokenizer():
  * 
  *     def create_cameltokenizer(nlp):             # <<<<<<<<<<<<<<
  *         return CamelTokenizer(nlp)
  * 
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_21define_cameltokenizer_1create_cameltokenizer, 0, __pyx_n_s_define_cameltokenizer_locals_cre, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_21define_cameltokenizer_1create_cameltokenizer, 0, __pyx_n_s_define_cameltokenizer_locals_cre, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_create_cameltokenizer = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":190
+  /* "cameltokenizer/tokenizer.pyx":216
  *         return CamelTokenizer(nlp)
  * 
  *     return create_cameltokenizer             # <<<<<<<<<<<<<<
@@ -9195,7 +10025,7 @@ static PyObject *__pyx_pf_14cameltokenizer_9tokenizer_define_cameltokenizer(CYTH
   __pyx_r = __pyx_v_create_cameltokenizer;
   goto __pyx_L0;
 
-  /* "cameltokenizer/tokenizer.pyx":185
+  /* "cameltokenizer/tokenizer.pyx":211
  * 
  * @spacy.registry.tokenizers("cameltokenizer")
  * def define_cameltokenizer():             # <<<<<<<<<<<<<<
@@ -10189,7 +11019,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__42, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 944, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__56, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 944, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -10321,7 +11151,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__43, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 950, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__57, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 950, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -10453,7 +11283,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  * 
  * cdef extern from *:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__43, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 956, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__57, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 956, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -10877,7 +11707,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if itemsize <= 0:
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__44, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 133, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__58, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 133, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10909,7 +11739,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if not isinstance(format, bytes):
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__45, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 136, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__59, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11036,7 +11866,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__46, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 148, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__60, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11310,7 +12140,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *             if self.dtype_is_object:
  */
-      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__47, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 176, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__61, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 176, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_Raise(__pyx_t_10, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -11554,7 +12384,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(stru
  *         info.buf = self.data
  *         info.len = self.len
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__48, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 192, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__62, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12289,7 +13119,7 @@ static PyObject *__pyx_pf___pyx_array___reduce_cython__(CYTHON_UNUSED struct __p
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__49, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__63, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -12346,7 +13176,7 @@ static PyObject *__pyx_pf___pyx_array_2__setstate_cython__(CYTHON_UNUSED struct 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__50, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__64, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14058,7 +14888,7 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_6__setit
  * 
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__51, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 418, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__65, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 418, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -15106,7 +15936,7 @@ static PyObject *__pyx_memoryview_convert_item_to_object(struct __pyx_memoryview
  *         else:
  *             if len(self.view.format) == 1:
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__52, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 495, __pyx_L5_except_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__66, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 495, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_Raise(__pyx_t_6, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -15468,7 +16298,7 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_8__getbu
  * 
  *         if flags & PyBUF_ND:
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__53, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 520, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__67, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 520, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -16017,7 +16847,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_7strides___get__(st
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__54, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 570, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__68, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 570, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -16134,7 +16964,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_10suboffsets___get_
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->view.ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 577, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__55, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 577, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__69, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 577, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_3;
@@ -17177,7 +18007,7 @@ static PyObject *__pyx_pf___pyx_memoryview___reduce_cython__(CYTHON_UNUSED struc
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__56, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__70, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -17234,7 +18064,7 @@ static PyObject *__pyx_pf___pyx_memoryview_2__setstate_cython__(CYTHON_UNUSED st
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__57, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__71, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -17591,9 +18421,9 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
         __Pyx_GOTREF(__pyx_t_7);
         { Py_ssize_t __pyx_temp;
           for (__pyx_temp=0; __pyx_temp < ((__pyx_v_ndim - __pyx_t_8) + 1); __pyx_temp++) {
-            __Pyx_INCREF(__pyx_slice__58);
-            __Pyx_GIVEREF(__pyx_slice__58);
-            PyList_SET_ITEM(__pyx_t_7, __pyx_temp, __pyx_slice__58);
+            __Pyx_INCREF(__pyx_slice__72);
+            __Pyx_GIVEREF(__pyx_slice__72);
+            PyList_SET_ITEM(__pyx_t_7, __pyx_temp, __pyx_slice__72);
           }
         }
         __pyx_t_9 = __Pyx_PyList_Extend(__pyx_v_result, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 682, __pyx_L1_error)
@@ -17626,7 +18456,7 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
  *         else:
  */
       /*else*/ {
-        __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_result, __pyx_slice__58); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 685, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_result, __pyx_slice__72); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 685, __pyx_L1_error)
       }
       __pyx_L7:;
 
@@ -17766,9 +18596,9 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
     __Pyx_GOTREF(__pyx_t_3);
     { Py_ssize_t __pyx_temp;
       for (__pyx_temp=0; __pyx_temp < __pyx_v_nslices; __pyx_temp++) {
-        __Pyx_INCREF(__pyx_slice__58);
-        __Pyx_GIVEREF(__pyx_slice__58);
-        PyList_SET_ITEM(__pyx_t_3, __pyx_temp, __pyx_slice__58);
+        __Pyx_INCREF(__pyx_slice__72);
+        __Pyx_GIVEREF(__pyx_slice__72);
+        PyList_SET_ITEM(__pyx_t_3, __pyx_temp, __pyx_slice__72);
       }
     }
     __pyx_t_9 = __Pyx_PyList_Extend(__pyx_v_result, __pyx_t_3); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 696, __pyx_L1_error)
@@ -17895,7 +18725,7 @@ static PyObject *assert_direct_dimensions(Py_ssize_t *__pyx_v_suboffsets, int __
  * 
  * 
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__59, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 703, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__73, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 703, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -20080,7 +20910,7 @@ static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__60, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__74, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -20137,7 +20967,7 @@ static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUS
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__61, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__75, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -24936,24 +25766,37 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_View_MemoryView, __pyx_k_View_MemoryView, sizeof(__pyx_k_View_MemoryView), 0, 0, 1, 1},
   {&__pyx_n_s_Vocab, __pyx_k_Vocab, sizeof(__pyx_k_Vocab), 0, 0, 1, 1},
   {&__pyx_kp_s__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 0, 1, 0},
-  {&__pyx_n_s__13, __pyx_k__13, sizeof(__pyx_k__13), 0, 0, 1, 1},
+  {&__pyx_kp_s__13, __pyx_k__13, sizeof(__pyx_k__13), 0, 0, 1, 0},
   {&__pyx_kp_s__14, __pyx_k__14, sizeof(__pyx_k__14), 0, 0, 1, 0},
   {&__pyx_kp_s__16, __pyx_k__16, sizeof(__pyx_k__16), 0, 0, 1, 0},
+  {&__pyx_kp_s__17, __pyx_k__17, sizeof(__pyx_k__17), 0, 0, 1, 0},
+  {&__pyx_n_s__18, __pyx_k__18, sizeof(__pyx_k__18), 0, 0, 1, 1},
+  {&__pyx_kp_s__19, __pyx_k__19, sizeof(__pyx_k__19), 0, 0, 1, 0},
   {&__pyx_kp_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 0},
-  {&__pyx_kp_s__20, __pyx_k__20, sizeof(__pyx_k__20), 0, 0, 1, 0},
   {&__pyx_kp_s__21, __pyx_k__21, sizeof(__pyx_k__21), 0, 0, 1, 0},
-  {&__pyx_kp_s__22, __pyx_k__22, sizeof(__pyx_k__22), 0, 0, 1, 0},
-  {&__pyx_kp_s__23, __pyx_k__23, sizeof(__pyx_k__23), 0, 0, 1, 0},
-  {&__pyx_kp_s__24, __pyx_k__24, sizeof(__pyx_k__24), 0, 0, 1, 0},
+  {&__pyx_kp_s__25, __pyx_k__25, sizeof(__pyx_k__25), 0, 0, 1, 0},
   {&__pyx_kp_s__26, __pyx_k__26, sizeof(__pyx_k__26), 0, 0, 1, 0},
   {&__pyx_kp_s__27, __pyx_k__27, sizeof(__pyx_k__27), 0, 0, 1, 0},
   {&__pyx_kp_s__28, __pyx_k__28, sizeof(__pyx_k__28), 0, 0, 1, 0},
   {&__pyx_kp_s__29, __pyx_k__29, sizeof(__pyx_k__29), 0, 0, 1, 0},
   {&__pyx_kp_s__30, __pyx_k__30, sizeof(__pyx_k__30), 0, 0, 1, 0},
   {&__pyx_kp_s__31, __pyx_k__31, sizeof(__pyx_k__31), 0, 0, 1, 0},
+  {&__pyx_kp_s__32, __pyx_k__32, sizeof(__pyx_k__32), 0, 0, 1, 0},
   {&__pyx_kp_s__34, __pyx_k__34, sizeof(__pyx_k__34), 0, 0, 1, 0},
+  {&__pyx_kp_s__35, __pyx_k__35, sizeof(__pyx_k__35), 0, 0, 1, 0},
+  {&__pyx_kp_s__36, __pyx_k__36, sizeof(__pyx_k__36), 0, 0, 1, 0},
+  {&__pyx_kp_s__39, __pyx_k__39, sizeof(__pyx_k__39), 0, 0, 1, 0},
   {&__pyx_kp_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 0},
+  {&__pyx_kp_s__40, __pyx_k__40, sizeof(__pyx_k__40), 0, 0, 1, 0},
+  {&__pyx_kp_s__41, __pyx_k__41, sizeof(__pyx_k__41), 0, 0, 1, 0},
+  {&__pyx_kp_s__42, __pyx_k__42, sizeof(__pyx_k__42), 0, 0, 1, 0},
+  {&__pyx_kp_s__43, __pyx_k__43, sizeof(__pyx_k__43), 0, 0, 1, 0},
+  {&__pyx_kp_s__44, __pyx_k__44, sizeof(__pyx_k__44), 0, 0, 1, 0},
+  {&__pyx_kp_s__45, __pyx_k__45, sizeof(__pyx_k__45), 0, 0, 1, 0},
+  {&__pyx_kp_s__48, __pyx_k__48, sizeof(__pyx_k__48), 0, 0, 1, 0},
+  {&__pyx_kp_s__49, __pyx_k__49, sizeof(__pyx_k__49), 0, 0, 1, 0},
   {&__pyx_kp_s__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 0, 1, 0},
+  {&__pyx_kp_s__50, __pyx_k__50, sizeof(__pyx_k__50), 0, 0, 1, 0},
   {&__pyx_kp_s__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 0, 1, 0},
   {&__pyx_kp_s__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 0, 1, 0},
   {&__pyx_kp_s__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 1, 0},
@@ -25122,11 +25965,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_words, __pyx_k_words, sizeof(__pyx_k_words), 0, 0, 1, 1},
   {&__pyx_n_s_write, __pyx_k_write, sizeof(__pyx_k_write), 0, 0, 1, 1},
   {&__pyx_n_s_zip, __pyx_k_zip, sizeof(__pyx_k_zip), 0, 0, 1, 1},
+  {&__pyx_n_s_zzz, __pyx_k_zzz, sizeof(__pyx_k_zzz), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 49, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 121, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 944, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 133, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 148, __pyx_L1_error)
@@ -25157,10 +26001,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
   /* "cameltokenizer/tokenizer.pyx":87
  *                 j += 3
- *             elif token.endswith('".') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace('".', ''), '"', '.'])             # <<<<<<<<<<<<<<
  *                 j += 3
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
  */
   __pyx_tuple__7 = PyTuple_Pack(2, __pyx_kp_s__6, __pyx_kp_s_); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
@@ -25168,10 +26012,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
   /* "cameltokenizer/tokenizer.pyx":90
  *                 j += 3
- *             elif token.endswith(').') and len(token) >2 and i+1 == n_tokens:
+ *             elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
  *                 fixed.extend([token.replace(').', ''), ')', '.'])             # <<<<<<<<<<<<<<
  *                 j += 3
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:
  */
   __pyx_tuple__11 = PyTuple_Pack(2, __pyx_kp_s__10, __pyx_kp_s_); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
@@ -25180,7 +26024,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "cameltokenizer/tokenizer.pyx":92
  *                 fixed.extend([token.replace(').', ''), ')', '.'])
  *                 j += 3
- *             elif token.endswith('.') and len(token) >= 2 and i+1 == n_tokens and token[:-1].isdecimal():             # <<<<<<<<<<<<<<
+ *             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:             # <<<<<<<<<<<<<<
  *                 fixed.extend([token[:-1], '.'])
  *                 j += 2
  */
@@ -25188,95 +26032,106 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__12);
   __Pyx_GIVEREF(__pyx_slice__12);
 
-  /* "cameltokenizer/tokenizer.pyx":109
+  /* "cameltokenizer/tokenizer.pyx":96
+ *                 j += 2
+ *             elif token.startswith('') and len(token) >= 2 and token[1] in ['(', '"']:
+ *                 fixed.extend(['', token[1:]])             # <<<<<<<<<<<<<<
+ *                 j += 2
+ *             elif (token.startswith('') or token.startswith(''))and len(token) >= 2 and token[1:].isdecimal():
+ */
+  __pyx_slice__15 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__15)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__15);
+  __Pyx_GIVEREF(__pyx_slice__15);
+
+  /* "cameltokenizer/tokenizer.pyx":115
  *             else:
  *                 token = dediac_ar(token)
  *                 if token.replace('+_', '').replace('_+', '') == raw_token:             # <<<<<<<<<<<<<<
  *                     token = token.replace('+_', '_').replace('_+', '_')
  *                     split_tokens.append(token.split('_'))
  */
-  __pyx_tuple__15 = PyTuple_Pack(2, __pyx_kp_s__14, __pyx_kp_s_); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 109, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_tuple__17 = PyTuple_Pack(2, __pyx_kp_s__16, __pyx_kp_s_); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 109, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_kp_s__19, __pyx_kp_s_); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
+  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_kp_s__21, __pyx_kp_s_); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "cameltokenizer/tokenizer.pyx":110
+  /* "cameltokenizer/tokenizer.pyx":116
  *                 token = dediac_ar(token)
  *                 if token.replace('+_', '').replace('_+', '') == raw_token:
  *                     token = token.replace('+_', '_').replace('_+', '_')             # <<<<<<<<<<<<<<
  *                     split_tokens.append(token.split('_'))
  *                 else:
  */
-  __pyx_tuple__18 = PyTuple_Pack(2, __pyx_kp_s__14, __pyx_n_s__13); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__18);
-  __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_tuple__19 = PyTuple_Pack(2, __pyx_kp_s__16, __pyx_n_s__13); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__19);
-  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_tuple__23 = PyTuple_Pack(2, __pyx_kp_s__19, __pyx_n_s__18); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_kp_s__21, __pyx_n_s__18); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
 
-  /* "cameltokenizer/tokenizer.pyx":127
- *             elif n_segments == 1:
- *                 if segment.startswith(''):
- *                     split_token = ['', segment[1:]]             # <<<<<<<<<<<<<<
- *                 elif segment.count('') == 1:
- *                     parts = segment.split('')
- */
-  __pyx_slice__25 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__25)) __PYX_ERR(0, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__25);
-  __Pyx_GIVEREF(__pyx_slice__25);
-
-  /* "cameltokenizer/tokenizer.pyx":135
+  /* "cameltokenizer/tokenizer.pyx":141
  *                     split_token = [segment[:-1], '']
- *                 elif segment.endswith('') or segment.endswith(''):
- *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
- *                 elif segment.endswith(''):
- *                     split_token = [segment[:-3], segment[-3:]]
+ *                 elif segment.endswith('zzz'):
+ *                     split_token = [segment[:-1], segment[-1:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]
  */
-  __pyx_slice__32 = PySlice_New(Py_None, __pyx_int_neg_2, Py_None); if (unlikely(!__pyx_slice__32)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__32);
-  __Pyx_GIVEREF(__pyx_slice__32);
-  __pyx_slice__33 = PySlice_New(__pyx_int_neg_2, Py_None, Py_None); if (unlikely(!__pyx_slice__33)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_slice__33 = PySlice_New(__pyx_int_neg_1, Py_None, Py_None); if (unlikely(!__pyx_slice__33)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__33);
   __Pyx_GIVEREF(__pyx_slice__33);
 
-  /* "cameltokenizer/tokenizer.pyx":137
+  /* "cameltokenizer/tokenizer.pyx":143
+ *                     split_token = [segment[:-1], segment[-1:]]
+ *                 elif segment.endswith('') or segment.endswith('') or segment.endswith(''):
+ *                     split_token = [segment[:-2], segment[-2:]]             # <<<<<<<<<<<<<<
+ *                 elif segment.endswith(''):
  *                     split_token = [segment[:-2], segment[-2:]]
+ */
+  __pyx_slice__37 = PySlice_New(Py_None, __pyx_int_neg_2, Py_None); if (unlikely(!__pyx_slice__37)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__37);
+  __Pyx_GIVEREF(__pyx_slice__37);
+  __pyx_slice__38 = PySlice_New(__pyx_int_neg_2, Py_None, Py_None); if (unlikely(!__pyx_slice__38)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__38);
+  __Pyx_GIVEREF(__pyx_slice__38);
+
+  /* "cameltokenizer/tokenizer.pyx":157
+ *                     split_token = [segment[:-1], segment[-1:]]
  *                 elif segment.endswith(''):
  *                     split_token = [segment[:-3], segment[-3:]]             # <<<<<<<<<<<<<<
- *             fixed_split_tokens.append(split_token)
- *         return fixed_split_tokens
+ *                 elif segment.endswith(''):
+ *                     split_token = [segment[:-3], segment[-3:]]
  */
-  __pyx_slice__35 = PySlice_New(Py_None, __pyx_int_neg_3, Py_None); if (unlikely(!__pyx_slice__35)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__35);
-  __Pyx_GIVEREF(__pyx_slice__35);
-  __pyx_slice__36 = PySlice_New(__pyx_int_neg_3, Py_None, Py_None); if (unlikely(!__pyx_slice__36)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__36);
-  __Pyx_GIVEREF(__pyx_slice__36);
+  __pyx_slice__46 = PySlice_New(Py_None, __pyx_int_neg_3, Py_None); if (unlikely(!__pyx_slice__46)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__46);
+  __Pyx_GIVEREF(__pyx_slice__46);
+  __pyx_slice__47 = PySlice_New(__pyx_int_neg_3, Py_None, Py_None); if (unlikely(!__pyx_slice__47)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__47);
+  __Pyx_GIVEREF(__pyx_slice__47);
 
-  /* "cameltokenizer/tokenizer.pyx":168
+  /* "cameltokenizer/tokenizer.pyx":194
  *         """
  *         path = util.ensure_path(path)
  *         with path.open("wb") as file_:             # <<<<<<<<<<<<<<
  *             file_.write(self.to_bytes(**kwargs))
  * 
  */
-  __pyx_tuple__38 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 168, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
+  __pyx_tuple__52 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__52);
+  __Pyx_GIVEREF(__pyx_tuple__52);
 
-  /* "cameltokenizer/tokenizer.pyx":187
+  /* "cameltokenizer/tokenizer.pyx":213
  * def define_cameltokenizer():
  * 
  *     def create_cameltokenizer(nlp):             # <<<<<<<<<<<<<<
  *         return CamelTokenizer(nlp)
  * 
  */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_nlp); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 187, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__40);
-  __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_create_cameltokenizer, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_tuple__54 = PyTuple_Pack(1, __pyx_n_s_nlp); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__54);
+  __Pyx_GIVEREF(__pyx_tuple__54);
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_create_cameltokenizer, 213, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 213, __pyx_L1_error)
 
   /* "../../language310/lib/site-packages/numpy/__init__.pxd":944
  *         __pyx_import_array()
@@ -25285,9 +26140,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(2, 944, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__42);
-  __Pyx_GIVEREF(__pyx_tuple__42);
+  __pyx_tuple__56 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(2, 944, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__56);
+  __Pyx_GIVEREF(__pyx_tuple__56);
 
   /* "../../language310/lib/site-packages/numpy/__init__.pxd":950
  *         _import_umath()
@@ -25296,9 +26151,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__43 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(2, 950, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__43);
-  __Pyx_GIVEREF(__pyx_tuple__43);
+  __pyx_tuple__57 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(2, 950, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__57);
+  __Pyx_GIVEREF(__pyx_tuple__57);
 
   /* "View.MemoryView":133
  * 
@@ -25307,9 +26162,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if itemsize <= 0:
  */
-  __pyx_tuple__44 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(1, 133, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__44);
-  __Pyx_GIVEREF(__pyx_tuple__44);
+  __pyx_tuple__58 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(1, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__58);
+  __Pyx_GIVEREF(__pyx_tuple__58);
 
   /* "View.MemoryView":136
  * 
@@ -25318,9 +26173,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if not isinstance(format, bytes):
  */
-  __pyx_tuple__45 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(1, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_tuple__59 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(1, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__59);
+  __Pyx_GIVEREF(__pyx_tuple__59);
 
   /* "View.MemoryView":148
  * 
@@ -25329,9 +26184,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__46 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(1, 148, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__46);
-  __Pyx_GIVEREF(__pyx_tuple__46);
+  __pyx_tuple__60 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(1, 148, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__60);
+  __Pyx_GIVEREF(__pyx_tuple__60);
 
   /* "View.MemoryView":176
  *             self.data = <char *>malloc(self.len)
@@ -25340,9 +26195,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *             if self.dtype_is_object:
  */
-  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(1, 176, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__47);
-  __Pyx_GIVEREF(__pyx_tuple__47);
+  __pyx_tuple__61 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(1, 176, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__61);
+  __Pyx_GIVEREF(__pyx_tuple__61);
 
   /* "View.MemoryView":192
  *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
@@ -25351,9 +26206,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         info.buf = self.data
  *         info.len = self.len
  */
-  __pyx_tuple__48 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(1, 192, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__48);
-  __Pyx_GIVEREF(__pyx_tuple__48);
+  __pyx_tuple__62 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(1, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -25361,18 +26216,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__49 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__49);
-  __Pyx_GIVEREF(__pyx_tuple__49);
+  __pyx_tuple__63 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__63)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__63);
+  __Pyx_GIVEREF(__pyx_tuple__63);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__50 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__50);
-  __Pyx_GIVEREF(__pyx_tuple__50);
+  __pyx_tuple__64 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__64);
+  __Pyx_GIVEREF(__pyx_tuple__64);
 
   /* "View.MemoryView":418
  *     def __setitem__(memoryview self, object index, object value):
@@ -25381,9 +26236,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
-  __pyx_tuple__51 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(1, 418, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__51);
-  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_tuple__65 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__65)) __PYX_ERR(1, 418, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__65);
+  __Pyx_GIVEREF(__pyx_tuple__65);
 
   /* "View.MemoryView":495
  *             result = struct.unpack(self.view.format, bytesitem)
@@ -25392,9 +26247,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         else:
  *             if len(self.view.format) == 1:
  */
-  __pyx_tuple__52 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(1, 495, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__52);
-  __Pyx_GIVEREF(__pyx_tuple__52);
+  __pyx_tuple__66 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(1, 495, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__66);
+  __Pyx_GIVEREF(__pyx_tuple__66);
 
   /* "View.MemoryView":520
  *     def __getbuffer__(self, Py_buffer *info, int flags):
@@ -25403,9 +26258,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if flags & PyBUF_ND:
  */
-  __pyx_tuple__53 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(1, 520, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__53);
-  __Pyx_GIVEREF(__pyx_tuple__53);
+  __pyx_tuple__67 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__67)) __PYX_ERR(1, 520, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__67);
+  __Pyx_GIVEREF(__pyx_tuple__67);
 
   /* "View.MemoryView":570
  *         if self.view.strides == NULL:
@@ -25414,9 +26269,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
-  __pyx_tuple__54 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(1, 570, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__54);
-  __Pyx_GIVEREF(__pyx_tuple__54);
+  __pyx_tuple__68 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__68)) __PYX_ERR(1, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__68);
+  __Pyx_GIVEREF(__pyx_tuple__68);
 
   /* "View.MemoryView":577
  *     def suboffsets(self):
@@ -25425,12 +26280,12 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([suboffset for suboffset in self.view.suboffsets[:self.view.ndim]])
  */
-  __pyx_tuple__55 = PyTuple_New(1); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(1, 577, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__55);
+  __pyx_tuple__69 = PyTuple_New(1); if (unlikely(!__pyx_tuple__69)) __PYX_ERR(1, 577, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__69);
   __Pyx_INCREF(__pyx_int_neg_1);
   __Pyx_GIVEREF(__pyx_int_neg_1);
-  PyTuple_SET_ITEM(__pyx_tuple__55, 0, __pyx_int_neg_1);
-  __Pyx_GIVEREF(__pyx_tuple__55);
+  PyTuple_SET_ITEM(__pyx_tuple__69, 0, __pyx_int_neg_1);
+  __Pyx_GIVEREF(__pyx_tuple__69);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -25438,18 +26293,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__56 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__56);
-  __Pyx_GIVEREF(__pyx_tuple__56);
+  __pyx_tuple__70 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__70)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__70);
+  __Pyx_GIVEREF(__pyx_tuple__70);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__57 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__57);
-  __Pyx_GIVEREF(__pyx_tuple__57);
+  __pyx_tuple__71 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__71);
+  __Pyx_GIVEREF(__pyx_tuple__71);
 
   /* "View.MemoryView":682
  *         if item is Ellipsis:
@@ -25458,9 +26313,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *                 seen_ellipsis = True
  *             else:
  */
-  __pyx_slice__58 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__58)) __PYX_ERR(1, 682, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__58);
-  __Pyx_GIVEREF(__pyx_slice__58);
+  __pyx_slice__72 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__72)) __PYX_ERR(1, 682, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__72);
+  __Pyx_GIVEREF(__pyx_slice__72);
 
   /* "View.MemoryView":703
  *     for suboffset in suboffsets[:ndim]:
@@ -25469,9 +26324,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__59 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(1, 703, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__59);
-  __Pyx_GIVEREF(__pyx_tuple__59);
+  __pyx_tuple__73 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__73)) __PYX_ERR(1, 703, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__73);
+  __Pyx_GIVEREF(__pyx_tuple__73);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -25479,18 +26334,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__60 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__60);
-  __Pyx_GIVEREF(__pyx_tuple__60);
+  __pyx_tuple__74 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__74)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__74);
+  __Pyx_GIVEREF(__pyx_tuple__74);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__61 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__61);
-  __Pyx_GIVEREF(__pyx_tuple__61);
+  __pyx_tuple__75 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__75)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__75);
+  __Pyx_GIVEREF(__pyx_tuple__75);
 
   /* "cameltokenizer/tokenizer.pyx":72
  *         return morpho_doc
@@ -25499,10 +26354,10 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         # return dediac_ar(normalize_unicode(s))
  *         return dediac_ar(s)
  */
-  __pyx_tuple__62 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_s); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__62);
-  __Pyx_GIVEREF(__pyx_tuple__62);
-  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_normalize, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_tuple__76 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_s); if (unlikely(!__pyx_tuple__76)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__76);
+  __Pyx_GIVEREF(__pyx_tuple__76);
+  __pyx_codeobj__77 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__76, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_normalize, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__77)) __PYX_ERR(0, 72, __pyx_L1_error)
 
   /* "cameltokenizer/tokenizer.pyx":76
  *         return dediac_ar(s)
@@ -25511,92 +26366,92 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         """ handle problems possibly occurring also in other spaCy tokenizers """
  *         n_tokens = len(tokens)
  */
-  __pyx_tuple__64 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_tokens, __pyx_n_s_n_tokens, __pyx_n_s_fixed, __pyx_n_s_fix_map, __pyx_n_s_j, __pyx_n_s_i, __pyx_n_s_token); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 76, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__64);
-  __Pyx_GIVEREF(__pyx_tuple__64);
-  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_fix_raw_tokens, 76, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_tuple__78 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_tokens, __pyx_n_s_n_tokens, __pyx_n_s_fixed, __pyx_n_s_fix_map, __pyx_n_s_j, __pyx_n_s_i, __pyx_n_s_token); if (unlikely(!__pyx_tuple__78)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__78);
+  __Pyx_GIVEREF(__pyx_tuple__78);
+  __pyx_codeobj__79 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__78, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_fix_raw_tokens, 76, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__79)) __PYX_ERR(0, 76, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":101
+  /* "cameltokenizer/tokenizer.pyx":107
  *         return fixed, fix_map
  * 
  *     def split_align_tokens(self, raw_tokens, tokens):             # <<<<<<<<<<<<<<
  *         split_tokens = []
  *         for i, token in enumerate(tokens):
  */
-  __pyx_tuple__66 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_raw_tokens, __pyx_n_s_tokens, __pyx_n_s_split_tokens, __pyx_n_s_i, __pyx_n_s_token, __pyx_n_s_raw_token); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__66);
-  __Pyx_GIVEREF(__pyx_tuple__66);
-  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_split_align_tokens, 101, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_tuple__80 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_raw_tokens, __pyx_n_s_tokens, __pyx_n_s_split_tokens, __pyx_n_s_i, __pyx_n_s_token, __pyx_n_s_raw_token); if (unlikely(!__pyx_tuple__80)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__80);
+  __Pyx_GIVEREF(__pyx_tuple__80);
+  __pyx_codeobj__81 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__80, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_split_align_tokens, 107, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__81)) __PYX_ERR(0, 107, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":117
+  /* "cameltokenizer/tokenizer.pyx":123
  *         return zip(raw_tokens, split_tokens)
  * 
  *     def improve_morphological_tokenization(self, split_tokens):             # <<<<<<<<<<<<<<
  *         """ fix a few cases of over-splitting; split some more prefixes and suffixes """
  *         fixed_split_tokens = []
  */
-  __pyx_tuple__68 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_split_tokens, __pyx_n_s_fixed_split_tokens, __pyx_n_s_split_token, __pyx_n_s_n_segments, __pyx_n_s_segment, __pyx_n_s_parts); if (unlikely(!__pyx_tuple__68)) __PYX_ERR(0, 117, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__68);
-  __Pyx_GIVEREF(__pyx_tuple__68);
-  __pyx_codeobj__69 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__68, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_improve_morphological_tokenizati, 117, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__69)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_tuple__82 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_split_tokens, __pyx_n_s_fixed_split_tokens, __pyx_n_s_split_token, __pyx_n_s_n_segments, __pyx_n_s_segment, __pyx_n_s_parts); if (unlikely(!__pyx_tuple__82)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__82);
+  __Pyx_GIVEREF(__pyx_tuple__82);
+  __pyx_codeobj__83 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__82, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_improve_morphological_tokenizati, 123, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__83)) __PYX_ERR(0, 123, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":141
+  /* "cameltokenizer/tokenizer.pyx":167
  *         return fixed_split_tokens
  * 
  *     def score(self, examples, **kwargs):             # <<<<<<<<<<<<<<
  *         validate_examples(examples, "Tokenizer.score")
  *         return Scorer.score_tokenization(examples)
  */
-  __pyx_tuple__70 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_examples, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__70)) __PYX_ERR(0, 141, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__70);
-  __Pyx_GIVEREF(__pyx_tuple__70);
-  __pyx_codeobj__71 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__70, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_score, 141, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__71)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_tuple__84 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_examples, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__84)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__84);
+  __Pyx_GIVEREF(__pyx_tuple__84);
+  __pyx_codeobj__85 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__84, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_score, 167, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__85)) __PYX_ERR(0, 167, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":145
+  /* "cameltokenizer/tokenizer.pyx":171
  *         return Scorer.score_tokenization(examples)
  * 
  *     def pipe(self, texts, batch_size=1000):             # <<<<<<<<<<<<<<
  *         """Tokenize a stream of texts.
  * 
  */
-  __pyx_tuple__72 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_texts, __pyx_n_s_batch_size, __pyx_n_s_text); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(0, 145, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__72);
-  __Pyx_GIVEREF(__pyx_tuple__72);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__72, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_pipe, 145, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_tuple__86 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_texts, __pyx_n_s_batch_size, __pyx_n_s_text); if (unlikely(!__pyx_tuple__86)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__86);
+  __Pyx_GIVEREF(__pyx_tuple__86);
+  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__86, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_pipe, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 171, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":158
+  /* "cameltokenizer/tokenizer.pyx":184
  *             yield self(text)
  * 
  *     def to_disk(self, path, **kwargs):             # <<<<<<<<<<<<<<
  *         """Save the current state to a directory.
  * 
  */
-  __pyx_tuple__73 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_path, __pyx_n_s_kwargs, __pyx_n_s_file); if (unlikely(!__pyx_tuple__73)) __PYX_ERR(0, 158, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__73);
-  __Pyx_GIVEREF(__pyx_tuple__73);
-  __pyx_codeobj__74 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__73, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_to_disk, 158, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__74)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_tuple__87 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_path, __pyx_n_s_kwargs, __pyx_n_s_file); if (unlikely(!__pyx_tuple__87)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__87);
+  __Pyx_GIVEREF(__pyx_tuple__87);
+  __pyx_codeobj__88 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__87, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_to_disk, 184, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__88)) __PYX_ERR(0, 184, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":171
+  /* "cameltokenizer/tokenizer.pyx":197
  *             file_.write(self.to_bytes(**kwargs))
  * 
  *     def to_bytes(self, *, exclude=tuple()):             # <<<<<<<<<<<<<<
  *         """Serialize the current state to a binary string.
  * 
  */
-  __pyx_tuple__75 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_exclude, __pyx_n_s_serializers); if (unlikely(!__pyx_tuple__75)) __PYX_ERR(0, 171, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__75);
-  __Pyx_GIVEREF(__pyx_tuple__75);
-  __pyx_codeobj__76 = (PyObject*)__Pyx_PyCode_New(1, 1, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__75, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_to_bytes, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__76)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_tuple__89 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_exclude, __pyx_n_s_serializers); if (unlikely(!__pyx_tuple__89)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__89);
+  __Pyx_GIVEREF(__pyx_tuple__89);
+  __pyx_codeobj__90 = (PyObject*)__Pyx_PyCode_New(1, 1, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__89, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_to_bytes, 197, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__90)) __PYX_ERR(0, 197, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     cdef tuple state
  *     cdef object _dict
  */
-  __pyx_tuple__77 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__77)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__77);
-  __Pyx_GIVEREF(__pyx_tuple__77);
-  __pyx_codeobj__78 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__77, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__78)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__91 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_state, __pyx_n_s_dict_2, __pyx_n_s_use_setstate); if (unlikely(!__pyx_tuple__91)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__91);
+  __Pyx_GIVEREF(__pyx_tuple__91);
+  __pyx_codeobj__92 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__91, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__92)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "(tree fragment)":16
  *     else:
@@ -25604,43 +26459,43 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_CamelTokenizer__set_state(self, __pyx_state)
  */
-  __pyx_tuple__79 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__79)) __PYX_ERR(1, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__79);
-  __Pyx_GIVEREF(__pyx_tuple__79);
-  __pyx_codeobj__80 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__79, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__80)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_tuple__93 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__93)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__93);
+  __Pyx_GIVEREF(__pyx_tuple__93);
+  __pyx_codeobj__94 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__93, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__94)) __PYX_ERR(1, 16, __pyx_L1_error)
 
-  /* "cameltokenizer/tokenizer.pyx":184
+  /* "cameltokenizer/tokenizer.pyx":210
  *         return util.to_bytes(serializers, exclude)
  * 
  * @spacy.registry.tokenizers("cameltokenizer")             # <<<<<<<<<<<<<<
  * def define_cameltokenizer():
  * 
  */
-  __pyx_tuple__81 = PyTuple_Pack(1, __pyx_n_s_cameltokenizer); if (unlikely(!__pyx_tuple__81)) __PYX_ERR(0, 184, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__81);
-  __Pyx_GIVEREF(__pyx_tuple__81);
+  __pyx_tuple__95 = PyTuple_Pack(1, __pyx_n_s_cameltokenizer); if (unlikely(!__pyx_tuple__95)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__95);
+  __Pyx_GIVEREF(__pyx_tuple__95);
 
-  /* "cameltokenizer/tokenizer.pyx":185
+  /* "cameltokenizer/tokenizer.pyx":211
  * 
  * @spacy.registry.tokenizers("cameltokenizer")
  * def define_cameltokenizer():             # <<<<<<<<<<<<<<
  * 
  *     def create_cameltokenizer(nlp):
  */
-  __pyx_tuple__82 = PyTuple_Pack(2, __pyx_n_s_create_cameltokenizer, __pyx_n_s_create_cameltokenizer); if (unlikely(!__pyx_tuple__82)) __PYX_ERR(0, 185, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__82);
-  __Pyx_GIVEREF(__pyx_tuple__82);
-  __pyx_codeobj__83 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__82, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_define_cameltokenizer, 185, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__83)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_tuple__96 = PyTuple_Pack(2, __pyx_n_s_create_cameltokenizer, __pyx_n_s_create_cameltokenizer); if (unlikely(!__pyx_tuple__96)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__96);
+  __Pyx_GIVEREF(__pyx_tuple__96);
+  __pyx_codeobj__97 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__96, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cameltokenizer_tokenizer_pyx, __pyx_n_s_define_cameltokenizer, 211, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__97)) __PYX_ERR(0, 211, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_CamelTokenizer(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__84 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__84)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__84);
-  __Pyx_GIVEREF(__pyx_tuple__84);
-  __pyx_codeobj__85 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__84, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_CamelTokenizer, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__85)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__98 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__98)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__98);
+  __Pyx_GIVEREF(__pyx_tuple__98);
+  __pyx_codeobj__99 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__98, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_CamelTokenizer, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__99)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -25649,9 +26504,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_tuple__86 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__86)) __PYX_ERR(1, 286, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__86);
-  __Pyx_GIVEREF(__pyx_tuple__86);
+  __pyx_tuple__100 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__100)) __PYX_ERR(1, 286, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__100);
+  __Pyx_GIVEREF(__pyx_tuple__100);
 
   /* "View.MemoryView":287
  * 
@@ -25660,9 +26515,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_tuple__87 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__87)) __PYX_ERR(1, 287, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__87);
-  __Pyx_GIVEREF(__pyx_tuple__87);
+  __pyx_tuple__101 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__101)) __PYX_ERR(1, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__101);
+  __Pyx_GIVEREF(__pyx_tuple__101);
 
   /* "View.MemoryView":288
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -25671,9 +26526,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__88 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__88)) __PYX_ERR(1, 288, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__88);
-  __Pyx_GIVEREF(__pyx_tuple__88);
+  __pyx_tuple__102 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__102)) __PYX_ERR(1, 288, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__102);
+  __Pyx_GIVEREF(__pyx_tuple__102);
 
   /* "View.MemoryView":291
  * 
@@ -25682,9 +26537,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_tuple__89 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__89)) __PYX_ERR(1, 291, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__89);
-  __Pyx_GIVEREF(__pyx_tuple__89);
+  __pyx_tuple__103 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__103)) __PYX_ERR(1, 291, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__103);
+  __Pyx_GIVEREF(__pyx_tuple__103);
 
   /* "View.MemoryView":292
  * 
@@ -25693,19 +26548,19 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__90 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__90)) __PYX_ERR(1, 292, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__90);
-  __Pyx_GIVEREF(__pyx_tuple__90);
+  __pyx_tuple__104 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__104)) __PYX_ERR(1, 292, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__104);
+  __Pyx_GIVEREF(__pyx_tuple__104);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Enum(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__91 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__91)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__91);
-  __Pyx_GIVEREF(__pyx_tuple__91);
-  __pyx_codeobj__92 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__91, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__92)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__105 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__105)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__105);
+  __Pyx_GIVEREF(__pyx_tuple__105);
+  __pyx_codeobj__106 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__105, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__106)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -25784,7 +26639,7 @@ static int __Pyx_modinit_type_init_code(void) {
   if (PyObject_SetAttr(__pyx_m, __pyx_n_s_CamelTokenizer, (PyObject *)&__pyx_type_14cameltokenizer_9tokenizer_CamelTokenizer) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_14cameltokenizer_9tokenizer_CamelTokenizer) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer = &__pyx_type_14cameltokenizer_9tokenizer_CamelTokenizer;
-  if (PyType_Ready(&__pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe.tp_print = 0;
   #endif
@@ -25792,7 +26647,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe = &__pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct__pipe;
-  if (PyType_Ready(&__pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct_1_to_bytes) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct_1_to_bytes) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_14cameltokenizer_9tokenizer___pyx_scope_struct_1_to_bytes.tp_print = 0;
   #endif
@@ -26454,7 +27309,7 @@ if (!__Pyx_RefNanny) {
  *         # return dediac_ar(normalize_unicode(s))
  *         return dediac_ar(s)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_5normalize, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_normalize, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_5normalize, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_normalize, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__77)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_normalize, __pyx_t_2) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -26467,92 +27322,92 @@ if (!__Pyx_RefNanny) {
  *         """ handle problems possibly occurring also in other spaCy tokenizers """
  *         n_tokens = len(tokens)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_7fix_raw_tokens, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_fix_raw_tokens, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_7fix_raw_tokens, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_fix_raw_tokens, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__79)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_fix_raw_tokens, __pyx_t_2) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
-  /* "cameltokenizer/tokenizer.pyx":101
+  /* "cameltokenizer/tokenizer.pyx":107
  *         return fixed, fix_map
  * 
  *     def split_align_tokens(self, raw_tokens, tokens):             # <<<<<<<<<<<<<<
  *         split_tokens = []
  *         for i, token in enumerate(tokens):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_9split_align_tokens, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_split_align_token, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__67)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_9split_align_tokens, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_split_align_token, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__81)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_split_align_tokens, __pyx_t_2) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_split_align_tokens, __pyx_t_2) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
-  /* "cameltokenizer/tokenizer.pyx":117
+  /* "cameltokenizer/tokenizer.pyx":123
  *         return zip(raw_tokens, split_tokens)
  * 
  *     def improve_morphological_tokenization(self, split_tokens):             # <<<<<<<<<<<<<<
  *         """ fix a few cases of over-splitting; split some more prefixes and suffixes """
  *         fixed_split_tokens = []
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_11improve_morphological_tokenization, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_improve_morpholog, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__69)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_11improve_morphological_tokenization, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_improve_morpholog, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__83)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_improve_morphological_tokenizati, __pyx_t_2) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_improve_morphological_tokenizati, __pyx_t_2) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
-  /* "cameltokenizer/tokenizer.pyx":141
+  /* "cameltokenizer/tokenizer.pyx":167
  *         return fixed_split_tokens
  * 
  *     def score(self, examples, **kwargs):             # <<<<<<<<<<<<<<
  *         validate_examples(examples, "Tokenizer.score")
  *         return Scorer.score_tokenization(examples)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_13score, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_score, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__71)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_13score, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_score, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__85)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_score, __pyx_t_2) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_score, __pyx_t_2) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
-  /* "cameltokenizer/tokenizer.pyx":145
+  /* "cameltokenizer/tokenizer.pyx":171
  *         return Scorer.score_tokenization(examples)
  * 
  *     def pipe(self, texts, batch_size=1000):             # <<<<<<<<<<<<<<
  *         """Tokenize a stream of texts.
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_15pipe, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_pipe, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_15pipe, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_pipe, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_pipe, __pyx_t_2) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_pipe, __pyx_t_2) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
-  /* "cameltokenizer/tokenizer.pyx":158
+  /* "cameltokenizer/tokenizer.pyx":184
  *             yield self(text)
  * 
  *     def to_disk(self, path, **kwargs):             # <<<<<<<<<<<<<<
  *         """Save the current state to a directory.
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_18to_disk, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_to_disk, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__74)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_18to_disk, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_to_disk, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__88)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_to_disk, __pyx_t_2) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_to_disk, __pyx_t_2) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
-  /* "cameltokenizer/tokenizer.pyx":171
+  /* "cameltokenizer/tokenizer.pyx":197
  *             file_.write(self.to_bytes(**kwargs))
  * 
  *     def to_bytes(self, *, exclude=tuple()):             # <<<<<<<<<<<<<<
  *         """Serialize the current state to a binary string.
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyTuple_Type))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)(&PyTuple_Type))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_k__39 = __pyx_t_2;
+  __pyx_k__53 = __pyx_t_2;
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_20to_bytes, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_to_bytes, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__76)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_20to_bytes, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer_to_bytes, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__90)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_to_bytes, __pyx_t_2) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_to_bytes, __pyx_t_2) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
@@ -26561,7 +27416,7 @@ if (!__Pyx_RefNanny) {
  *     cdef tuple state
  *     cdef object _dict
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_22__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer___reduce_cython, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__78)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_22__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer___reduce_cython, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__92)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_reduce_cython, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -26573,53 +27428,53 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_CamelTokenizer__set_state(self, __pyx_state)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_24__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer___setstate_cython, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__80)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_14CamelTokenizer_24__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_CamelTokenizer___setstate_cython, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__94)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem((PyObject *)__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer->tp_dict, __pyx_n_s_setstate_cython, __pyx_t_2) < 0) __PYX_ERR(1, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_14cameltokenizer_9tokenizer_CamelTokenizer);
 
-  /* "cameltokenizer/tokenizer.pyx":184
+  /* "cameltokenizer/tokenizer.pyx":210
  *         return util.to_bytes(serializers, exclude)
  * 
  * @spacy.registry.tokenizers("cameltokenizer")             # <<<<<<<<<<<<<<
  * def define_cameltokenizer():
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_spacy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_spacy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_registry); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_registry); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tokenizers); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tokenizers); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__81, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__95, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cameltokenizer/tokenizer.pyx":185
+  /* "cameltokenizer/tokenizer.pyx":211
  * 
  * @spacy.registry.tokenizers("cameltokenizer")
  * def define_cameltokenizer():             # <<<<<<<<<<<<<<
  * 
  *     def create_cameltokenizer(nlp):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_1define_cameltokenizer, 0, __pyx_n_s_define_cameltokenizer, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__83)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_1define_cameltokenizer, 0, __pyx_n_s_define_cameltokenizer, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__97)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "cameltokenizer/tokenizer.pyx":184
+  /* "cameltokenizer/tokenizer.pyx":210
  *         return util.to_bytes(serializers, exclude)
  * 
  * @spacy.registry.tokenizers("cameltokenizer")             # <<<<<<<<<<<<<<
  * def define_cameltokenizer():
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_define_cameltokenizer, __pyx_t_3) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_define_cameltokenizer, __pyx_t_3) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "(tree fragment)":1
@@ -26627,7 +27482,7 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_3__pyx_unpickle_CamelTokenizer, 0, __pyx_n_s_pyx_unpickle_CamelTokenizer, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__85)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_14cameltokenizer_9tokenizer_3__pyx_unpickle_CamelTokenizer, 0, __pyx_n_s_pyx_unpickle_CamelTokenizer, NULL, __pyx_n_s_cameltokenizer_tokenizer, __pyx_d, ((PyObject *)__pyx_codeobj__99)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_CamelTokenizer, __pyx_t_3) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -26662,7 +27517,7 @@ if (!__Pyx_RefNanny) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__86, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 286, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__100, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_XGOTREF(generic);
   __Pyx_DECREF_SET(generic, __pyx_t_3);
@@ -26676,7 +27531,7 @@ if (!__Pyx_RefNanny) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__87, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 287, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__101, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_XGOTREF(strided);
   __Pyx_DECREF_SET(strided, __pyx_t_3);
@@ -26690,7 +27545,7 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__88, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 288, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__102, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_XGOTREF(indirect);
   __Pyx_DECREF_SET(indirect, __pyx_t_3);
@@ -26704,7 +27559,7 @@ if (!__Pyx_RefNanny) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__89, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 291, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__103, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_XGOTREF(contiguous);
   __Pyx_DECREF_SET(contiguous, __pyx_t_3);
@@ -26718,7 +27573,7 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__90, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 292, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__104, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_XGOTREF(indirect_contiguous);
   __Pyx_DECREF_SET(indirect_contiguous, __pyx_t_3);
@@ -27760,6 +28615,155 @@ bad:
     return NULL;
 }
 
+/* BytesEquals */
+static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals) {
+#if CYTHON_COMPILING_IN_PYPY
+    return PyObject_RichCompareBool(s1, s2, equals);
+#else
+    if (s1 == s2) {
+        return (equals == Py_EQ);
+    } else if (PyBytes_CheckExact(s1) & PyBytes_CheckExact(s2)) {
+        const char *ps1, *ps2;
+        Py_ssize_t length = PyBytes_GET_SIZE(s1);
+        if (length != PyBytes_GET_SIZE(s2))
+            return (equals == Py_NE);
+        ps1 = PyBytes_AS_STRING(s1);
+        ps2 = PyBytes_AS_STRING(s2);
+        if (ps1[0] != ps2[0]) {
+            return (equals == Py_NE);
+        } else if (length == 1) {
+            return (equals == Py_EQ);
+        } else {
+            int result;
+#if CYTHON_USE_UNICODE_INTERNALS
+            Py_hash_t hash1, hash2;
+            hash1 = ((PyBytesObject*)s1)->ob_shash;
+            hash2 = ((PyBytesObject*)s2)->ob_shash;
+            if (hash1 != hash2 && hash1 != -1 && hash2 != -1) {
+                return (equals == Py_NE);
+            }
+#endif
+            result = memcmp(ps1, ps2, (size_t)length);
+            return (equals == Py_EQ) ? (result == 0) : (result != 0);
+        }
+    } else if ((s1 == Py_None) & PyBytes_CheckExact(s2)) {
+        return (equals == Py_NE);
+    } else if ((s2 == Py_None) & PyBytes_CheckExact(s1)) {
+        return (equals == Py_NE);
+    } else {
+        int result;
+        PyObject* py_result = PyObject_RichCompare(s1, s2, equals);
+        if (!py_result)
+            return -1;
+        result = __Pyx_PyObject_IsTrue(py_result);
+        Py_DECREF(py_result);
+        return result;
+    }
+#endif
+}
+
+/* UnicodeEquals */
+static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals) {
+#if CYTHON_COMPILING_IN_PYPY
+    return PyObject_RichCompareBool(s1, s2, equals);
+#else
+#if PY_MAJOR_VERSION < 3
+    PyObject* owned_ref = NULL;
+#endif
+    int s1_is_unicode, s2_is_unicode;
+    if (s1 == s2) {
+        goto return_eq;
+    }
+    s1_is_unicode = PyUnicode_CheckExact(s1);
+    s2_is_unicode = PyUnicode_CheckExact(s2);
+#if PY_MAJOR_VERSION < 3
+    if ((s1_is_unicode & (!s2_is_unicode)) && PyString_CheckExact(s2)) {
+        owned_ref = PyUnicode_FromObject(s2);
+        if (unlikely(!owned_ref))
+            return -1;
+        s2 = owned_ref;
+        s2_is_unicode = 1;
+    } else if ((s2_is_unicode & (!s1_is_unicode)) && PyString_CheckExact(s1)) {
+        owned_ref = PyUnicode_FromObject(s1);
+        if (unlikely(!owned_ref))
+            return -1;
+        s1 = owned_ref;
+        s1_is_unicode = 1;
+    } else if (((!s2_is_unicode) & (!s1_is_unicode))) {
+        return __Pyx_PyBytes_Equals(s1, s2, equals);
+    }
+#endif
+    if (s1_is_unicode & s2_is_unicode) {
+        Py_ssize_t length;
+        int kind;
+        void *data1, *data2;
+        if (unlikely(__Pyx_PyUnicode_READY(s1) < 0) || unlikely(__Pyx_PyUnicode_READY(s2) < 0))
+            return -1;
+        length = __Pyx_PyUnicode_GET_LENGTH(s1);
+        if (length != __Pyx_PyUnicode_GET_LENGTH(s2)) {
+            goto return_ne;
+        }
+#if CYTHON_USE_UNICODE_INTERNALS
+        {
+            Py_hash_t hash1, hash2;
+        #if CYTHON_PEP393_ENABLED
+            hash1 = ((PyASCIIObject*)s1)->hash;
+            hash2 = ((PyASCIIObject*)s2)->hash;
+        #else
+            hash1 = ((PyUnicodeObject*)s1)->hash;
+            hash2 = ((PyUnicodeObject*)s2)->hash;
+        #endif
+            if (hash1 != hash2 && hash1 != -1 && hash2 != -1) {
+                goto return_ne;
+            }
+        }
+#endif
+        kind = __Pyx_PyUnicode_KIND(s1);
+        if (kind != __Pyx_PyUnicode_KIND(s2)) {
+            goto return_ne;
+        }
+        data1 = __Pyx_PyUnicode_DATA(s1);
+        data2 = __Pyx_PyUnicode_DATA(s2);
+        if (__Pyx_PyUnicode_READ(kind, data1, 0) != __Pyx_PyUnicode_READ(kind, data2, 0)) {
+            goto return_ne;
+        } else if (length == 1) {
+            goto return_eq;
+        } else {
+            int result = memcmp(data1, data2, (size_t)(length * kind));
+            #if PY_MAJOR_VERSION < 3
+            Py_XDECREF(owned_ref);
+            #endif
+            return (equals == Py_EQ) ? (result == 0) : (result != 0);
+        }
+    } else if ((s1 == Py_None) & s2_is_unicode) {
+        goto return_ne;
+    } else if ((s2 == Py_None) & s1_is_unicode) {
+        goto return_ne;
+    } else {
+        int result;
+        PyObject* py_result = PyObject_RichCompare(s1, s2, equals);
+        #if PY_MAJOR_VERSION < 3
+        Py_XDECREF(owned_ref);
+        #endif
+        if (!py_result)
+            return -1;
+        result = __Pyx_PyObject_IsTrue(py_result);
+        Py_DECREF(py_result);
+        return result;
+    }
+return_eq:
+    #if PY_MAJOR_VERSION < 3
+    Py_XDECREF(owned_ref);
+    #endif
+    return (equals == Py_EQ);
+return_ne:
+    #if PY_MAJOR_VERSION < 3
+    Py_XDECREF(owned_ref);
+    #endif
+    return (equals == Py_NE);
+#endif
+}
+
 /* PyIntBinop */
 #if !CYTHON_COMPILING_IN_PYPY
 static PyObject* __Pyx_PyInt_SubtractObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
@@ -28009,155 +29013,6 @@ static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x) {
         Py_DECREF(retval);
     }
     return 0;
-}
-
-/* BytesEquals */
-static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals) {
-#if CYTHON_COMPILING_IN_PYPY
-    return PyObject_RichCompareBool(s1, s2, equals);
-#else
-    if (s1 == s2) {
-        return (equals == Py_EQ);
-    } else if (PyBytes_CheckExact(s1) & PyBytes_CheckExact(s2)) {
-        const char *ps1, *ps2;
-        Py_ssize_t length = PyBytes_GET_SIZE(s1);
-        if (length != PyBytes_GET_SIZE(s2))
-            return (equals == Py_NE);
-        ps1 = PyBytes_AS_STRING(s1);
-        ps2 = PyBytes_AS_STRING(s2);
-        if (ps1[0] != ps2[0]) {
-            return (equals == Py_NE);
-        } else if (length == 1) {
-            return (equals == Py_EQ);
-        } else {
-            int result;
-#if CYTHON_USE_UNICODE_INTERNALS
-            Py_hash_t hash1, hash2;
-            hash1 = ((PyBytesObject*)s1)->ob_shash;
-            hash2 = ((PyBytesObject*)s2)->ob_shash;
-            if (hash1 != hash2 && hash1 != -1 && hash2 != -1) {
-                return (equals == Py_NE);
-            }
-#endif
-            result = memcmp(ps1, ps2, (size_t)length);
-            return (equals == Py_EQ) ? (result == 0) : (result != 0);
-        }
-    } else if ((s1 == Py_None) & PyBytes_CheckExact(s2)) {
-        return (equals == Py_NE);
-    } else if ((s2 == Py_None) & PyBytes_CheckExact(s1)) {
-        return (equals == Py_NE);
-    } else {
-        int result;
-        PyObject* py_result = PyObject_RichCompare(s1, s2, equals);
-        if (!py_result)
-            return -1;
-        result = __Pyx_PyObject_IsTrue(py_result);
-        Py_DECREF(py_result);
-        return result;
-    }
-#endif
-}
-
-/* UnicodeEquals */
-static CYTHON_INLINE int __Pyx_PyUnicode_Equals(PyObject* s1, PyObject* s2, int equals) {
-#if CYTHON_COMPILING_IN_PYPY
-    return PyObject_RichCompareBool(s1, s2, equals);
-#else
-#if PY_MAJOR_VERSION < 3
-    PyObject* owned_ref = NULL;
-#endif
-    int s1_is_unicode, s2_is_unicode;
-    if (s1 == s2) {
-        goto return_eq;
-    }
-    s1_is_unicode = PyUnicode_CheckExact(s1);
-    s2_is_unicode = PyUnicode_CheckExact(s2);
-#if PY_MAJOR_VERSION < 3
-    if ((s1_is_unicode & (!s2_is_unicode)) && PyString_CheckExact(s2)) {
-        owned_ref = PyUnicode_FromObject(s2);
-        if (unlikely(!owned_ref))
-            return -1;
-        s2 = owned_ref;
-        s2_is_unicode = 1;
-    } else if ((s2_is_unicode & (!s1_is_unicode)) && PyString_CheckExact(s1)) {
-        owned_ref = PyUnicode_FromObject(s1);
-        if (unlikely(!owned_ref))
-            return -1;
-        s1 = owned_ref;
-        s1_is_unicode = 1;
-    } else if (((!s2_is_unicode) & (!s1_is_unicode))) {
-        return __Pyx_PyBytes_Equals(s1, s2, equals);
-    }
-#endif
-    if (s1_is_unicode & s2_is_unicode) {
-        Py_ssize_t length;
-        int kind;
-        void *data1, *data2;
-        if (unlikely(__Pyx_PyUnicode_READY(s1) < 0) || unlikely(__Pyx_PyUnicode_READY(s2) < 0))
-            return -1;
-        length = __Pyx_PyUnicode_GET_LENGTH(s1);
-        if (length != __Pyx_PyUnicode_GET_LENGTH(s2)) {
-            goto return_ne;
-        }
-#if CYTHON_USE_UNICODE_INTERNALS
-        {
-            Py_hash_t hash1, hash2;
-        #if CYTHON_PEP393_ENABLED
-            hash1 = ((PyASCIIObject*)s1)->hash;
-            hash2 = ((PyASCIIObject*)s2)->hash;
-        #else
-            hash1 = ((PyUnicodeObject*)s1)->hash;
-            hash2 = ((PyUnicodeObject*)s2)->hash;
-        #endif
-            if (hash1 != hash2 && hash1 != -1 && hash2 != -1) {
-                goto return_ne;
-            }
-        }
-#endif
-        kind = __Pyx_PyUnicode_KIND(s1);
-        if (kind != __Pyx_PyUnicode_KIND(s2)) {
-            goto return_ne;
-        }
-        data1 = __Pyx_PyUnicode_DATA(s1);
-        data2 = __Pyx_PyUnicode_DATA(s2);
-        if (__Pyx_PyUnicode_READ(kind, data1, 0) != __Pyx_PyUnicode_READ(kind, data2, 0)) {
-            goto return_ne;
-        } else if (length == 1) {
-            goto return_eq;
-        } else {
-            int result = memcmp(data1, data2, (size_t)(length * kind));
-            #if PY_MAJOR_VERSION < 3
-            Py_XDECREF(owned_ref);
-            #endif
-            return (equals == Py_EQ) ? (result == 0) : (result != 0);
-        }
-    } else if ((s1 == Py_None) & s2_is_unicode) {
-        goto return_ne;
-    } else if ((s2 == Py_None) & s1_is_unicode) {
-        goto return_ne;
-    } else {
-        int result;
-        PyObject* py_result = PyObject_RichCompare(s1, s2, equals);
-        #if PY_MAJOR_VERSION < 3
-        Py_XDECREF(owned_ref);
-        #endif
-        if (!py_result)
-            return -1;
-        result = __Pyx_PyObject_IsTrue(py_result);
-        Py_DECREF(py_result);
-        return result;
-    }
-return_eq:
-    #if PY_MAJOR_VERSION < 3
-    Py_XDECREF(owned_ref);
-    #endif
-    return (equals == Py_EQ);
-return_ne:
-    #if PY_MAJOR_VERSION < 3
-    Py_XDECREF(owned_ref);
-    #endif
-    return (equals == Py_NE);
-#endif
 }
 
 /* PyIntCompare */
