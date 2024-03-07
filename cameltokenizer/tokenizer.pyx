@@ -95,8 +95,14 @@ cdef class CamelTokenizer:
             elif token.startswith('و') and len(token) >= 2 and token[1] in ['(', '"']:
                 fixed.extend(['و', token[1:]])
                 j += 2
+            elif token.startswith('و') and len(token) >= 2 and token[1:].isdecimal():
+                fixed.extend(['و', token[1:]])
+                j += 2
             elif (token.startswith('ب') or token.startswith('ل'))and len(token) >= 2 and token[1:].isdecimal():
                 fixed.extend([token[0], token[1:]])
+                j += 2
+            elif token.startswith('ال') and len(token) >= 2 and token[2:].isdecimal():
+                fixed.extend(['ال', token[2:]])
                 j += 2
             else:
                 fixed.append(token)
@@ -130,6 +136,14 @@ cdef class CamelTokenizer:
                 split_token = ['عندما']
             elif n_segments == 1:
                 if segment.startswith('لال'):
+                    split_token = ['ل', segment[1:]]
+                elif segment.startswith('باست'):
+                    split_token = ['ب', segment[1:]]
+                elif segment.startswith('لاست'):
+                    split_token = ['ل', segment[1:]]
+                elif segment.startswith('بإع'):
+                    split_token = ['ب', segment[1:]]
+                elif segment.startswith('لإع'):
                     split_token = ['ل', segment[1:]]
                 elif segment.count('،') == 1:
                     parts = segment.split('،')
