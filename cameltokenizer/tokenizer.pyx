@@ -1,6 +1,8 @@
 # cython: embedsignature=True, binding=True
 # distutils: language=c++
 
+import pickle
+
 from camel_tools.disambig.mle import MLEDisambiguator
 from camel_tools.tokenizers.morphological import MorphologicalTokenizer
 from camel_tools.utils.normalize import normalize_unicode
@@ -8,30 +10,38 @@ from camel_tools.utils.dediac import dediac_ar
 
 cimport cython
 from cymem.cymem cimport Pool
-
+"""
+import sys, os
+path_this = os.path.dirname(os.path.abspath(__file__))
+path_spacy = os.path.abspath(os.path.join(path_this, '..', '..', 'spaCy'))
+sys.path.append(path_this)
+sys.path.append(path_spacy)
+"""
 import spacy
+
 from spacy.language import Language
-from spacy.vocab import Vocab
-from spacy.tokenizer import Tokenizer
+from spacy.tokenizer cimport Tokenizer
 from spacy.tokens.doc cimport Doc
 from spacy.lang.ar import Arabic
 from spacy import util
 from spacy.scorer import Scorer
 from spacy.training import validate_examples
 
+cdef class CamelTokenizer(Tokenizer):
 
-cdef class CamelTokenizer:
-
-    def __init__(self, object nlp):
-        # self.nlp = nlp
+    def __init__(self, Vocab vocab, rules=None, prefix_search=None,
+                 suffix_search=None, infix_finditer=None, token_match=None,
+                 url_match=None, faster_heuristics=True):
         self.nlp = Arabic()
         self.native_tokenizer = self.nlp.tokenizer
-        self.vocab = self.nlp.vocab
+        self.vocab = vocab
         mle_msa = MLEDisambiguator.pretrained('calima-msa-r13')
         self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=False)
         self.count = 0
 
-    def __call__(self, text, verbose=False):
+    def __call__(self, str text):
+        verbose = True
+        no_morpho = False
         self.count += 1
         # print self.count ,
         doc = self.native_tokenizer(text)
@@ -41,10 +51,15 @@ cdef class CamelTokenizer:
         raw_tokens_text = ''.join(raw_tokens)
         words = []
         spaces = []
-        morphos = self.atb_tokenizer.tokenize(raw_tokens)
-        alignments = self.split_align_tokens(raw_tokens, morphos)
-        if not alignments:
-            return doc
+        if no_morpho:
+            split_tokens = [[token] for token in raw_tokens]
+            split_tokens = self.improve_morphological_tokenization(split_tokens)
+            alignments = zip(raw_tokens, split_tokens)
+        else:
+            morphos = self.atb_tokenizer.tokenize(raw_tokens)
+            alignments = self.split_align_tokens(raw_tokens, morphos)
+            if not alignments:
+                return doc
         cdef Pool mem = Pool()
         for i, alignment in enumerate(alignments):
             raw_token, split_tokens = alignment
@@ -54,7 +69,8 @@ cdef class CamelTokenizer:
                 words.append(segment)
                 if j+1 == n_segments:
                     i_raw = fix_map.get(i, None)
-                    if i_raw:
+                    # if i_raw:
+                    if i_raw is not None:
                         spaces.append(doc[i_raw].whitespace_)
                     else:
                         spaces.append('')
@@ -64,7 +80,8 @@ cdef class CamelTokenizer:
         if verbose:
             doc_text = doc.text
             morpho_doc_text = morpho_doc.text
-            if morpho_doc_text != doc_text:
+            if len(morpho_doc_text) != len(doc_text) or morpho_doc_text != doc_text:
+                print(self.count , '---', len(morpho_doc_text), len(doc_text))
                 print(doc_text)
                 print(morpho_doc_text)
         return morpho_doc
@@ -133,13 +150,25 @@ cdef class CamelTokenizer:
         return zip(raw_tokens, split_tokens)
 
     def improve_morphological_tokenization(self, split_tokens):
-        """ fix a few cases of over-splitting; split some more prefixes and suffixes """
+        """ fix a few cases of over-splitting or "destructive" splitting;
+            split some more prefixes and suffixes """
         fixed_split_tokens = []
         for split_token in split_tokens:
             n_segments = len(split_token)
             segment = split_token[0]
-            if n_segments == 2 and segment == 'عند' and split_token[1] == 'ما':
-                split_token = ['عندما']
+            if n_segments == 2:
+                if segment == 'عند' and split_token[1] == 'ما':
+                    split_token = ['عندما']
+                elif split_token[0] == 'من' and split_token[1] == 'من': # mimman (min + man)
+                    split_token = ['من', 'م']
+                elif split_token[0] == 'من' and split_token[1] == 'نا': # minna (min + na)
+                    split_token = ['نا', 'م']
+                elif split_token[0] == 'عن' and split_token[1] == 'ما': # ʕammā (ʕan + mā)
+                    split_token = ['ما', 'ع']
+                elif split_token[0] == 'من' and split_token[1] == 'ما': # mimma (min + ma), offten is CONG
+                    split_token = ['ما', 'م']
+                elif split_token[0] == 'عن' and split_token[1] == 'لا': # ʕallā (ʕan + la)
+                    split_token = ['لا', 'ع']
             elif n_segments == 1:
                 if segment.startswith('ولف') or segment.startswith('وال') or segment.startswith('وار'):
                     split_token = ['و', segment[1:]]
@@ -203,36 +232,28 @@ cdef class CamelTokenizer:
         for text in texts:
             yield self(text)
 
-    def to_disk(self, path, **kwargs):
-        """Save the current state to a directory.
-
-        path (str / Path): A path to a directory, which will be created if
-            it doesn't exist.
-        exclude (list): String names of serialization fields to exclude.
-
-        DOCS: https://spacy.io/api/tokenizer#to_disk
-        """
-        path = util.ensure_path(path)
-        with path.open("wb") as file_:
-            file_.write(self.to_bytes(**kwargs))
+    # redefinition of following 4 methods from https://support.prodi.gy/t/saving-custom-tokenizer/395/2
 
     def to_bytes(self, *, exclude=tuple()):
-        """Serialize the current state to a binary string.
+        return pickle.dumps(self.__dict__)
 
-        exclude (list): String names of serialization fields to exclude.
-        RETURNS (bytes): The serialized form of the `Tokenizer` object.
+    def from_bytes(self, bytes_data, *, exclude=tuple()):
+        data = {}
+        self.__dict__.update(pickle.loads(data))
 
-        DOCS: https://spacy.io/api/tokenizer#to_bytes
-        """
-        serializers = {
-            "vocab": lambda: self.vocab.to_bytes(exclude=exclude),
-        }
-        return util.to_bytes(serializers, exclude)
+    def to_disk(self, path, **kwargs):
+        with open(path, 'wb') as file_:
+            file_.write(self.to_bytes())
+
+    def from_disk(self, path, *, exclude=tuple()):
+        with open(path, 'rb') as file_:
+            self.from_bytes(file_.read())
 
 @spacy.registry.tokenizers("cameltokenizer")
 def define_cameltokenizer():
 
     def create_cameltokenizer(nlp):
-        return CamelTokenizer(nlp)
+        # return CamelTokenizer(nlp)
+        return CamelTokenizer(nlp.vocab)
 
     return create_cameltokenizer
