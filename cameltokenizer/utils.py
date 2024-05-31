@@ -1,5 +1,7 @@
 import os
+import re
 from collections import defaultdict
+import unicodedata
 
 import pyconll
 from camel_tools.utils.charsets import UNICODE_LETTER_CHARSET
@@ -7,9 +9,10 @@ from camel_tools.utils.dediac import dediac_ar
 from camel_tools.utils.normalize import normalize_alef_ar
 from camel_tools.utils.normalize import normalize_alef_maksura_ar
 from camel_tools.utils.normalize import normalize_teh_marbuta_ar
+from pickle import NONE
 
-TATWEEL = u'\u0640' # 'ـ' Tatweel/Kashida character (esthetic character elongation for improved layout)
-ALEF_SUPER = u'\u0670' # ' ' Arabic Letter superscript Alef
+TATWEEL = '\u0640' # 'ـ' Tatweel/Kashida character (esthetic character elongation for improved layout)
+ALEF_SUPER = '\u0670' # ' ' Arabic Letter superscript Alef
 ALEF = 'ا' # u'\u0627'
 BA = 'ب' # u'\u0628'
 TA = 'ت' # u'\u062A'
@@ -19,6 +22,25 @@ ALIF_MAQSURA = 'ى' # u'\u0649'
 HAMZA = 'ء' # u'\u0621' 
 WAW_WITH_HAMZA = 'ؤ' # u'\u0624'
 YAH_WITH_HAMZA = 'ئ' # u'\u0626' 
+
+UNICODE_LETTER_CHARSET = set()
+for x in range(0x110000):
+    x_chr = chr(x)
+    x_cat = unicodedata.category(x_chr)
+    if x_cat[0] == 'L':
+        UNICODE_LETTER_CHARSET.add(x_chr)
+UNICODE_LETTER_CHARSET = frozenset(UNICODE_LETTER_CHARSET)
+
+# customized from camel_tools.utils modules: TATWEEL is not a regular diacritic !!!
+# AR_DIAC_CHARSET = frozenset(u'\u064b\u064c\u064d\u064e\u064f\u0650\u0651\u0652\u0670\u0640')
+CUSTOM_AR_DIAC_CHARSET = frozenset(u'\u064b\u064c\u064d\u064e\u064f\u0650\u0651\u0652\u0670')
+CUSTOM_DIAC_RE_AR = re.compile(u'[' +
+                         re.escape(u''.join(CUSTOM_AR_DIAC_CHARSET)) +
+                         u']')
+def custom_dediac_ar(s):
+    """Dediacritize Unicode Arabic string.
+    """
+    return CUSTOM_DIAC_RE_AR.sub(u'', s)
 
 def normalize_alef_maksura(s):
     # this is not the usual normalization
@@ -82,6 +104,81 @@ def msa_filter(folder='/_Tecnica/AI/CL/spacy/training/ar', filename='ar_padt-ud-
                 in_file.seek(0)
     in_file.close()
     if remove:
+        out_file.close()
+
+# see https://stackoverflow.com/questions/6314614/match-any-unicode-letter
+conllu_filter_patterns = [
+    [ALEF_SUPER, ''],
+    [TATWEEL, ''],
+]
+
+conllu_destructive_merges = {
+    "ممن": ['من', 'م'], # mimman (min + man)
+    'منا': ['نا', 'م'], # minna (min + na)
+    'عما': ['ما', 'ع'], # ʕammā (ʕan + mā)
+    'مما': ['ما', 'م'], # mimma (min + ma), offten is CONG
+    'ألا': ['لا', 'ع'], # ʕallā (ʕan + la)
+}
+
+def ar_padt_fix_conllu(folder='/_Tecnica/AI/CL/spacy/training/ar', folder_from='', filename='ar_padt-ud-train.conllu', fake=False):
+    if not folder_from:
+        folder_from = folder + '/original'
+    for filename in ['ar_padt-ud-train.conllu', 'ar_padt-ud-dev.conllu', 'ar_padt-ud-test.conllu']:
+        in_path = os.path.join(folder_from, filename)
+        in_file = open(in_path, 'r', encoding='utf-8')
+        out_path = os.path.join(folder, filename)
+        out_file = open(out_path, 'w', encoding='utf-8')
+        i = 0
+        span_start = span_end = ''
+        merge_to_fix = {}
+        while True:
+            i += 1
+            line = in_file.readline()
+            if not line:
+                print()
+                break
+            # leave comments unchanged
+            if line[0] == '#' or len(line) < 3:
+                out_file.write(line)
+                continue
+            # filter out a few special characters
+            for left, right in conllu_filter_patterns:
+                if line.count(left):
+                    fixed = ''
+                    prev = NONE
+                    for c in line:
+                        if c == left and prev in UNICODE_LETTER_CHARSET:
+                            fixed += right
+                        else:
+                            fixed += c
+                        prev = c
+                    line = fixed
+            """ the "smart" fix below doesn't improve the scores ? """
+            # fix (undo) some destructive merges of arabic particles
+            line_list = line.split('\t')
+            if len(line_list) > 2 and len(line_list[0].split('-')) == 2:
+                span = line_list[0].split('-')
+                if span[0].isnumeric() and span[1].isnumeric():
+                    if int(span[1]) == int(span[0]) + 1:
+                        merge_to_fix = conllu_destructive_merges.get(line_list[1], [])
+                        if merge_to_fix:
+                            span_start = span[0]
+                            span_end = span[1]
+                            print(i, span_start, span_end)
+            elif len(line_list) > 2 and line_list[0].isnumeric():
+                token_id = line_list[0]
+                if span_start and token_id > span_start:
+                    span_start = span_end = ''
+                elif token_id == span_start:
+                    line = '\t'.join([token_id, merge_to_fix[0]] + line_list[2:])
+                    span_start = ''
+                elif not span_start and token_id == span_end:
+                    line = '\t'.join([token_id, merge_to_fix[1]] + line_list[2:])
+                    span_end = ''
+            # remove diacritics from line; this is relevant only for lemmas), which are vocalized
+            line = custom_dediac_ar(line)
+            out_file.write(line)
+        in_file.close()
         out_file.close()
 
 def conllu_dediac(conll_in_path="/_Tecnica/AI/CL/spacy/training/ar/ar_padt-ud-train.conllu"):

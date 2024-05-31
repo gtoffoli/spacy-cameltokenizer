@@ -2,6 +2,7 @@
 # distutils: language=c++
 
 import pickle
+import attr
 
 from camel_tools.disambig.mle import MLEDisambiguator
 from camel_tools.tokenizers.morphological import MorphologicalTokenizer
@@ -23,10 +24,15 @@ from spacy.language import Language
 from spacy.tokenizer cimport Tokenizer
 from spacy.tokens.doc cimport Doc
 from spacy.lang.ar import Arabic
+from spacy.lang.ar.stop_words import STOP_WORDS
 from spacy import util
 from spacy.scorer import Scorer
 from spacy.training import validate_examples
 
+from cameltokenizer.female_first_names_in_arabic import female_first_names_in_arabic
+from cameltokenizer.male_first_names_in_arabic import male_first_names_in_arabic
+from cameltokenizer.last_names_in_arabic import last_names_in_arabic
+from cameltokenizer.function_words import ADVERBS, CONJUNCTIONS, PREPOSITIONS, PRONOUNS, NOUNS # non splittable words
 cdef class CamelTokenizer(Tokenizer):
 
     def __init__(self, Vocab vocab, rules=None, prefix_search=None,
@@ -39,12 +45,18 @@ cdef class CamelTokenizer(Tokenizer):
         self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=False)
         self.count = 0
 
-    def __call__(self, str text):
+    # def __call__(self, str text):
+    def __call__(self, text_or_doc):
         verbose = True
         no_morpho = False
         self.count += 1
         # print self.count ,
-        doc = self.native_tokenizer(text)
+        if isinstance(text_or_doc, str): # used in training pipeline
+            text = text_or_doc
+            doc = self.native_tokenizer(text)
+        else: # used as post-tokenire component in production pipeline
+            doc = text_or_doc
+            text = doc.text
         raw_tokens = [t.text for t in doc if t.text]
         raw_tokens, fix_map = self.fix_raw_tokens(raw_tokens)
         n_raw_tokens = len(raw_tokens)
@@ -53,11 +65,11 @@ cdef class CamelTokenizer(Tokenizer):
         spaces = []
         if no_morpho:
             split_tokens = [[token] for token in raw_tokens]
-            split_tokens = self.improve_morphological_tokenization(split_tokens)
+            split_tokens = self.improve_morphological_tokenization(split_tokens, text)
             alignments = zip(raw_tokens, split_tokens)
         else:
             morphos = self.atb_tokenizer.tokenize(raw_tokens)
-            alignments = self.split_align_tokens(raw_tokens, morphos)
+            alignments = self.split_align_tokens(raw_tokens, morphos, text)
             if not alignments:
                 return doc
         cdef Pool mem = Pool()
@@ -69,7 +81,6 @@ cdef class CamelTokenizer(Tokenizer):
                 words.append(segment)
                 if j+1 == n_segments:
                     i_raw = fix_map.get(i, None)
-                    # if i_raw:
                     if i_raw is not None:
                         spaces.append(doc[i_raw].whitespace_)
                     else:
@@ -100,10 +111,10 @@ cdef class CamelTokenizer(Tokenizer):
             if token.endswith(')-') and len(token) >2 and token.replace(')-', '').isalpha():
                 fixed.extend([token.replace(')-', ''), ')', '-'])
                 j += 3
-            elif token.endswith('".') and len(token) >2: # and i+1 == n_tokens:
+            elif token.endswith('".') and len(token) >2:
                 fixed.extend([token.replace('".', ''), '"', '.'])
                 j += 3
-            elif token.endswith(').') and len(token) >2: # and i+1 == n_tokens:
+            elif token.endswith(').') and len(token) >2:
                 fixed.extend([token.replace(').', ''), ')', '.'])
                 j += 3
             elif token.endswith('.') and len(token) >= 2  and token[:-1].isdecimal(): # and i+1 == n_tokens:
@@ -133,7 +144,7 @@ cdef class CamelTokenizer(Tokenizer):
             fix_map[j-1] = i
         return fixed, fix_map
 
-    def split_align_tokens(self, raw_tokens, tokens):
+    def split_align_tokens(self, raw_tokens, tokens, text):
         split_tokens = []
         for i, token in enumerate(tokens):
             raw_token = raw_tokens[i]
@@ -146,16 +157,17 @@ cdef class CamelTokenizer(Tokenizer):
                     split_tokens.append(token.split('_'))
                 else:
                     split_tokens.append([raw_token])
-            split_tokens = self.improve_morphological_tokenization(split_tokens)
+        split_tokens = self.improve_morphological_tokenization(split_tokens, text)
         return zip(raw_tokens, split_tokens)
 
-    def improve_morphological_tokenization(self, split_tokens):
+    def improve_morphological_tokenization(self, split_tokens, text):
         """ fix a few cases of over-splitting or "destructive" splitting;
             split some more prefixes and suffixes """
         fixed_split_tokens = []
         for split_token in split_tokens:
             n_segments = len(split_token)
             segment = split_token[0]
+                
             if n_segments == 2:
                 if segment == 'عند' and split_token[1] == 'ما':
                     split_token = ['عندما']
@@ -169,7 +181,7 @@ cdef class CamelTokenizer(Tokenizer):
                     split_token = ['ما', 'م']
                 elif split_token[0] == 'عن' and split_token[1] == 'لا': # ʕallā (ʕan + la)
                     split_token = ['لا', 'ع']
-            elif n_segments == 1:
+            elif n_segments == 1 and len(segment) > 3:
                 if segment.startswith('ولف') or segment.startswith('وال') or segment.startswith('وار'):
                     split_token = ['و', segment[1:]]
                 elif segment.startswith('لال'):
@@ -188,8 +200,6 @@ cdef class CamelTokenizer(Tokenizer):
                         split_token = [parts[0], '،', parts[1]]
                 elif segment.endswith('ةه') or segment.endswith('ىه'):
                     split_token = [segment[:-1], 'ه']
-                elif segment.endswith('zzz'):
-                    split_token = [segment[:-1], segment[-1:]]
                 elif segment.endswith('ةهم') or segment.endswith('يهم') or segment.endswith('ةها'):
                     split_token = [segment[:-2], segment[-2:]]
                 elif segment.endswith('ىها') or segment.endswith('عها'):
@@ -212,31 +222,30 @@ cdef class CamelTokenizer(Tokenizer):
                     split_token = [segment[:-2], segment[-2:]]
                 elif segment.endswith('اتهم'):
                     split_token = [segment[:-2], segment[-2:]]
+
+            if len(split_token) > 1:
+                token = ''.join(split_token)
+                if token in ADVERBS or \
+                   token in CONJUNCTIONS or \
+                   token in PREPOSITIONS or \
+                   token in PRONOUNS or \
+                   token in NOUNS or \
+                   token in female_first_names_in_arabic or \
+                   token in male_first_names_in_arabic or \
+                   token in last_names_in_arabic:
+                    # print(token, split_token)
+                    split_token = [token]
+
             fixed_split_tokens.append(split_token)
         return fixed_split_tokens
 
-    def score(self, examples, **kwargs):
-        validate_examples(examples, "Tokenizer.score")
-        return Scorer.score_tokenization(examples)
+    # redefinition of 4 methods; see https://support.prodi.gy/t/saving-custom-tokenizer/395/2
 
-    def pipe(self, texts, batch_size=1000):
-        """Tokenize a stream of texts.
-
-        texts: A sequence of unicode texts.
-        batch_size (int): Number of texts to accumulate in an internal buffer.
-        Defaults to 1000.
-        YIELDS (Doc): A sequence of Doc objects, in order.
-
-        DOCS: https://spacy.io/api/tokenizer#pipe
-        """
-        for text in texts:
-            yield self(text)
-
-    # redefinition of following 4 methods from https://support.prodi.gy/t/saving-custom-tokenizer/395/2
-
+    # see: https://stackoverflow.com/questions/41658015/object-has-no-attribute-dict-in-python3
     def to_bytes(self, *, exclude=tuple()):
-        return pickle.dumps(self.__dict__)
-
+        # return pickle.dumps(self.__dict__)
+        return pickle.dumps({})
+ 
     def from_bytes(self, bytes_data, *, exclude=tuple()):
         data = {}
         self.__dict__.update(pickle.loads(data))
