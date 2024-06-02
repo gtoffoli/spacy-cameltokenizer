@@ -1,3 +1,5 @@
+# most code in this module is no more in use
+
 import os
 import re
 from collections import defaultdict
@@ -54,7 +56,6 @@ def normalize_with_hamza(s):
     return s.replace(WAW_WITH_HAMZA, HAMZA).replace(YAH_WITH_HAMZA, HAMZA)
 
 def normalize_ar(s):
-    # return normalize_alef_ar(normalize_alef_maksura_ar(normalize_teh_marbuta_ar(s)))
     return normalize_with_hamza(normalize_alef_ar(normalize_alef_maksura(normalize_teh_marbuta(s))))
 
 def normalize_ar_1(s): 
@@ -204,7 +205,6 @@ def conllu_dediac(conll_in_path="/_Tecnica/AI/CL/spacy/training/ar/ar_padt-ud-tr
 # def conllu_loop(conll_path="/_Tecnica/AI/CL/spacy/training/ar/ar_padt-ud-train.conllu", \
 def conllu_loop(conll_path="/_Tecnica/AI/CL/spacy/training/ar/ar_padt-ud-train.out.conllu", \
                 sentence_function=None, token_function=None, pattern=None, data=None, max=0, verbose=0):
-    # train = pyconll.load_from_file(conll_path)
     with open(conll_path, 'r', encoding='utf-8') as f:
         source = f.read()
     train = pyconll.load.load_from_string(source)

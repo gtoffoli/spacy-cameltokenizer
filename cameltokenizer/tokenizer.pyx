@@ -32,7 +32,7 @@ from spacy.training import validate_examples
 from cameltokenizer.female_first_names_in_arabic import female_first_names_in_arabic
 from cameltokenizer.male_first_names_in_arabic import male_first_names_in_arabic
 from cameltokenizer.last_names_in_arabic import last_names_in_arabic
-from cameltokenizer.function_words import ADVERBS, CONJUNCTIONS, PREPOSITIONS, PRONOUNS, NOUNS # non splittable words
+from cameltokenizer.function_words import ADVERBS, CONJUNCTIONS, PREPOSITIONS, PRONOUNS, NOUNS # only non splittable words
 cdef class CamelTokenizer(Tokenizer):
 
     def __init__(self, Vocab vocab, rules=None, prefix_search=None,
@@ -45,7 +45,6 @@ cdef class CamelTokenizer(Tokenizer):
         self.atb_tokenizer = MorphologicalTokenizer(disambiguator=mle_msa, scheme='atbtok', split=False)
         self.count = 0
 
-    # def __call__(self, str text):
     def __call__(self, text_or_doc):
         verbose = True
         no_morpho = False
@@ -98,7 +97,6 @@ cdef class CamelTokenizer(Tokenizer):
         return morpho_doc
 
     def normalize(self, s):
-        # return dediac_ar(normalize_unicode(s))
         return dediac_ar(s)
 
     def fix_raw_tokens(self, tokens):
@@ -257,6 +255,8 @@ cdef class CamelTokenizer(Tokenizer):
     def from_disk(self, path, *, exclude=tuple()):
         with open(path, 'rb') as file_:
             self.from_bytes(file_.read())
+
+# the registration below is used only by the training pipeline
 
 @spacy.registry.tokenizers("cameltokenizer")
 def define_cameltokenizer():
