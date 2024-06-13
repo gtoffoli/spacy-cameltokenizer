@@ -29,6 +29,7 @@ from spacy import util
 from spacy.scorer import Scorer
 from spacy.training import validate_examples
 
+from cameltokenizer.utils import ALEF
 from cameltokenizer.female_first_names_in_arabic import female_first_names_in_arabic
 from cameltokenizer.male_first_names_in_arabic import male_first_names_in_arabic
 from cameltokenizer.last_names_in_arabic import last_names_in_arabic
@@ -181,41 +182,52 @@ cdef class CamelTokenizer(Tokenizer):
                     split_token = ['لا', 'ع']
             elif n_segments == 1 and len(segment) > 3:
                 if segment.startswith('ولف') or segment.startswith('وال') or segment.startswith('وار'):
+                    split_token = ['و', segment[1:]] # ++
+                elif segment.startswith('واع') and not segment.startswith('واعد'): #
+                    split_token = ['و', segment[1:]]
+                elif segment.startswith('وان') and segment[1:] not in ['وانغ', 'انغ']: #
                     split_token = ['و', segment[1:]]
                 elif segment.startswith('لال'):
-                    split_token = ['ل', segment[1:]]
+                    split_token = ['ل', segment[1:]] # +++++ ok
+                elif segment.startswith('لل'):
+                    split_token = ['ل', segment[1:]] # ALEF ellipsis
                 elif segment.startswith('باست'):
                     split_token = ['ب', segment[1:]]
-                elif segment.startswith('لاست'):
-                    split_token = ['ل', segment[1:]]
+                elif segment.startswith('لاست') or segment.startswith('للخ') or segment.startswith('لال'): # or new
+                    split_token = ['ل', segment[1:]] # 14 in train
                 elif segment.startswith('بإع') or segment.startswith('بم'):
                     split_token = ['ب', segment[1:]]
                 elif segment.startswith('لإع'):
-                    split_token = ['ل', segment[1:]]
+                    split_token = ['ل', segment[1:]] # 63 in train
+                elif segment.startswith('ان') and segment[2:] in PRONOUNS: #
+                    split_token = ['لان', segment[3:]]
+                elif segment.startswith('لان') and segment[3:] in PRONOUNS: # because + pronoun
+                    split_token = ['لان', segment[3:]]
+                    print(7)
                 elif segment.count('،') == 1:
                     parts = segment.split('،')
                     if parts[0].isalpha() and parts[1].isalpha():
-                        split_token = [parts[0], '،', parts[1]]
+                        split_token = [parts[0], '،', parts[1]] # 14 in train
                 elif segment.endswith('ةه') or segment.endswith('ىه'):
-                    split_token = [segment[:-1], 'ه']
+                    split_token = [segment[:-1], 'ه'] # +
                 elif segment.endswith('ةهم') or segment.endswith('يهم') or segment.endswith('ةها'):
-                    split_token = [segment[:-2], segment[-2:]]
+                    split_token = [segment[:-2], segment[-2:]] # +++
                 elif segment.endswith('ىها') or segment.endswith('عها'):
-                    split_token = [segment[:-2], segment[-2:]]
+                    split_token = [segment[:-2], segment[-2:]] # +
                 elif segment.endswith('يها'):
-                    split_token = [segment[:-2], segment[-2:]]
+                    split_token = [segment[:-2], segment[-2:]] # +
                 elif segment.endswith('ينا'):
-                    split_token = [segment[:-2], segment[-2:]]
+                    split_token = [segment[:-2], segment[-2:]] # no ? mainly foreign words
                 elif segment.endswith('اها'):
-                    split_token = [segment[:-2], segment[-2:]]
+                    split_token = [segment[:-2], segment[-2:]] # 54 in train
                 elif segment.endswith('اةي'):
-                    split_token = [segment[:-1], segment[-1:]]
+                    split_token = [segment[:-1], segment[-1:]] # 18 in train
                 elif segment.endswith('ليه'):
-                    split_token = [segment[:-1], segment[-1:]]
+                    split_token = [segment[:-1], segment[-1:]] # +
                 elif segment.endswith('يهما'):
-                    split_token = [segment[:-3], segment[-3:]]
+                    split_token = [segment[:-3], segment[-3:]] # 63 in train
                 elif segment.endswith('ةهما'):
-                    split_token = [segment[:-3], segment[-3:]]
+                    split_token = [segment[:-3], segment[-3:]] # 63 in train
                 elif segment.endswith('اتنا'):
                     split_token = [segment[:-2], segment[-2:]]
                 elif segment.endswith('اتهم'):
@@ -242,11 +254,11 @@ cdef class CamelTokenizer(Tokenizer):
     # see: https://stackoverflow.com/questions/41658015/object-has-no-attribute-dict-in-python3
     def to_bytes(self, *, exclude=tuple()):
         # return pickle.dumps(self.__dict__)
-        return pickle.dumps({})
+        return pickle.dumps('')
  
     def from_bytes(self, bytes_data, *, exclude=tuple()):
         data = {}
-        self.__dict__.update(pickle.loads(data))
+        # self.__dict__.update(pickle.loads(data))
 
     def to_disk(self, path, **kwargs):
         with open(path, 'wb') as file_:

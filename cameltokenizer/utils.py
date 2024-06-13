@@ -132,6 +132,7 @@ def ar_padt_fix_conllu(folder='/_Tecnica/AI/CL/spacy/training/ar', folder_from='
         i = 0
         span_start = span_end = ''
         merge_to_fix = {}
+        alef_ellipsis = False
         while True:
             i += 1
             line = in_file.readline()
@@ -157,25 +158,32 @@ def ar_padt_fix_conllu(folder='/_Tecnica/AI/CL/spacy/training/ar', folder_from='
             """ the "smart" fix below doesn't improve the scores ? """
             # fix (undo) some destructive merges of arabic particles
             line_list = line.split('\t')
-            if len(line_list) > 2 and len(line_list[0].split('-')) == 2:
+            if len(line_list) > 2 and len(line_list[0].split('-')) == 2: # multi-token word
                 span = line_list[0].split('-')
                 if span[0].isnumeric() and span[1].isnumeric():
-                    if int(span[1]) == int(span[0]) + 1:
+                    if int(span[1]) == int(span[0]) + 1: # 2-token word
                         merge_to_fix = conllu_destructive_merges.get(line_list[1], [])
-                        if merge_to_fix:
+                        alef_ellipsis = line_list[1].startswith('لل')
+                        if merge_to_fix or alef_ellipsis:
                             span_start = span[0]
                             span_end = span[1]
                             print(i, span_start, span_end)
-            elif len(line_list) > 2 and line_list[0].isnumeric():
+            elif len(line_list) > 2 and line_list[0].isnumeric(): # token list item
                 token_id = line_list[0]
-                if span_start and token_id > span_start:
+                if span_start and token_id > span_start: # out of the span?
                     span_start = span_end = ''
+                    alef_ellipsis = False
                 elif token_id == span_start:
-                    line = '\t'.join([token_id, merge_to_fix[0]] + line_list[2:])
+                    if merge_to_fix:
+                        line = '\t'.join([token_id, merge_to_fix[0]] + line_list[2:])
                     span_start = ''
                 elif not span_start and token_id == span_end:
-                    line = '\t'.join([token_id, merge_to_fix[1]] + line_list[2:])
+                    if merge_to_fix:
+                        line = '\t'.join([token_id, merge_to_fix[1]] + line_list[2:])
+                    elif alef_ellipsis and line_list[1].startswith('ال'):
+                        line = '\t'.join([token_id, line_list[1][1:]] + line_list[2:])
                     span_end = ''
+                    alef_ellipsis = False
             # remove diacritics from line; this is relevant only for lemmas), which are vocalized
             line = custom_dediac_ar(line)
             out_file.write(line)

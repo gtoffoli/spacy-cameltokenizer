@@ -106,6 +106,10 @@ PREPOSITIONS = set(preposition_list)
 
 pronoun_list = (
     "بعض", # some
+    "نا",
+    "ه",
+    "ها",
+    "هم",
 )
 PRONOUNS = set(pronoun_list)
 
